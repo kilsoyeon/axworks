@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>AXworks</title>
+
+
+    <!--js-->
+    <script type="text/javascript" src="assets/js/jquery-3.7.1.min.js"></script><!--jquery-->
+
+    <!--bootstrap-->
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap-5.3.3/dist/css/bootstrap.min.css" />
+    <script type="text/javascript" src="assets/bootstrap-5.3.3/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/bootstrap-5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!--css-->
+    <link rel="stylesheet" type="text/css" href="assets/css/custom.css" /> <!--부트스트랩 커스텀-->
+
+    <!--Material+Icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+
+    <link rel="icon" href="assets/images/favicon.ico">
+
+</head>
+
+<body class="">
+    <div class="user-page mx-auto">
+       
+        <!--lnb-->
+        <div class="lnb min-vh-100 text-center pt-4 position-fixed">
+            <img class="logo" src="assets/images/AI-W logo simbol.svg" alt="logo image" width="50px" />
+            
+            
+            <!--mobile nav-->
+            <div class="d-flex align-items-center">
+                <button class="btn btn-nobg-light m-nav-button me-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"><span class="material-symbols-outlined">menu</span></button>
+                <div class="m-logo"><img src="assets/images/AI-W logo wordtype.svg" alt="AXworks" height="24px;" onclick="location.href='user_chat.html'" ></div>
+                <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+                    <div class="offcanvas-header">
+                        <button class="btn btn-nobg-light m-nav-button me-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"><span class="material-symbols-outlined">menu</span></button>
+                        <div class="m-logo"><img src="assets/images/AI-W logo wordtype.svg" alt="AXworks" height="24px;"></div>
+                    </div>
+    
+                    <div class="d-flex flex-column p-3">
+                        <ul class="main-menu user">
+                            <li class=""><a href="user_service.html"><span class="menu-icon menu1"></span><span>서비스</span></a></li>
+                            <li class="active"><a href="user_save-chat.html"><span class="menu-icon menu2"></span><span>보관된 대화</span></a></li>
+                            <li class=""><a href="user_setting.html"><span class="menu-icon menu3"></span><span>설정</span></a></li>
+                            <li class=""><a href="관리자페이지-대시보드.html"><span class="menu-icon menu4"></span><span>관리자</span></a></li>
+                        </ul>
+                    </div>
+                    
+                    <h6 class="fw-bold text-start ps-3 mb-0">최근 히스토리</h6> 
+
+                    <div class="offcanvas-body pt-0">
+                        <div class="m-sidenav">
+                            <div class="history-list">
+                                <div class="d-flex align-items-center history-list-item">
+                                    <div style="width: calc(100% - 20px);">
+                                        <div class="text-truncate my-2">물어본 내용이 여기 요약되어 나오지요 물어본 내용이 여기 요약되어 나오지요</div>
+                                        <span class="slate-400 font-12">2024-08-21</span>
+                                    </div>
+                                    <div class="dropdown">
+                                        <button class="btn btn-nobg-slim font-16" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <span class="material-symbols-outlined">more_vert</span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">이름 바꾸기</a></li>
+                                            <li><a class="dropdown-item history-save" href="#">보관하기</a></li>
+                                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#history-delete">삭제</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+        
+                                <div class="d-flex align-items-center history-list-item">
+                                    <div style="width: calc(100% - 20px);">
+                                        <div class="text-truncate my-2">물어본 내용이 여기 요약되어 나오지요</div>
+                                        <span class="slate-400 font-12">2024-08-21</span>
+                                    </div>
+                                    <div class="dropdown">
+                                        <button class="btn btn-nobg-slim font-16" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <span class="material-symbols-outlined">more_vert</span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">이름 바꾸기</a></li>
+                                            <li><a class="dropdown-item history-save" href="#">보관하기</a></li>
+                                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#history-delete">삭제</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+        
+                                <div class="d-flex align-items-center history-list-item">
+                                    <div style="width: calc(100% - 20px);">
+                                        <div class="text-truncate my-2">물어본 내용이 여기 요약되어 나오지요</div>
+                                        <span class="slate-400 font-12">2024-08-21</span>
+                                    </div>
+                                    <div class="dropdown">
+                                        <button class="btn btn-nobg-slim font-16" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <span class="material-symbols-outlined">more_vert</span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">이름 바꾸기</a></li>
+                                            <li><a class="dropdown-item history-save" href="#">보관하기</a></li>
+                                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#history-delete">삭제</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center history-list-item">
+                                    <div style="width: calc(100% - 20px);">
+                                        <div class="text-truncate my-2">물어본 내용이 여기 요약되어 나오지요</div>
+                                        <span class="slate-400 font-12">2024-08-21</span>
+                                    </div>
+                                    <div class="dropdown">
+                                        <button class="btn btn-nobg-slim font-16" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <span class="material-symbols-outlined">more_vert</span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">이름 바꾸기</a></li>
+                                            <li><a class="dropdown-item history-save" href="#">보관하기</a></li>
+                                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#history-delete">삭제</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center history-list-item">
+                                    <div style="width: calc(100% - 20px);">
+                                        <div class="text-truncate my-2">물어본 내용이 여기 요약되어 나오지요</div>
+                                        <span class="slate-400 font-12">2024-08-21</span>
+                                    </div>
+                                    <div class="dropdown">
+                                        <button class="btn btn-nobg-slim font-16" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <span class="material-symbols-outlined">more_vert</span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">이름 바꾸기</a></li>
+                                            <li><a class="dropdown-item history-save" href="#">보관하기</a></li>
+                                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#history-delete">삭제</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center history-list-item">
+                                    <div style="width: calc(100% - 20px);">
+                                        <div class="text-truncate my-2">물어본 내용이 여기 요약되어 나오지요</div>
+                                        <span class="slate-400 font-12">2024-08-21</span>
+                                    </div>
+                                    <div class="dropdown">
+                                        <button class="btn btn-nobg-slim font-16" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <span class="material-symbols-outlined">more_vert</span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">이름 바꾸기</a></li>
+                                            <li><a class="dropdown-item history-save" href="#">보관하기</a></li>
+                                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#history-delete">삭제</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+            <!--//mobile nav-->
+
+            <div class="menu-group d-flex flex-column px-2 py-4">
+                <ul class="main-menu user">
+                            <li class=""><a href="user_service.html"><span class="menu-icon menu1"></span><span>서비스</span></a></li>
+                            <li class="active"><a href="user_save-chat.html"><span class="menu-icon menu2"></span><span>보관된 대화</span></a></li>
+                            <li class=""><a href="user_setting.html"><span class="menu-icon menu3"></span><span>설정</span></a></li>
+                            <li class=""><a href="관리자페이지-대시보드.html"><span class="menu-icon menu4"></span><span>관리자</span></a></li>
+                        </ul>
+                </ul>
+                <ul class="setting-menu mt-auto mb-0">
+                    <li><a type="button" class="btn btn-sm btn-nobg-light d-flex align-items-center justify-content-center" href="#"><span class="material-symbols-outlined me-1">logout</span><span>로그아웃</span></a></li>                           
+                </ul>
+            </div>
+        </div>
+        <!--history-->
+        <div id="History" class="sidenav">
+            <div class="p-2 mt-4">
+                <h5 class="fw-bold ms-1 mb-3">최근 히스토리</h5> 
+
+                <div class="d-flex align-items-center history-list-item">
+                    <div style="width: calc(100% - 20px);">
+                        <div class="text-truncate my-2">물어본 내용이 여기 요약되어 나오지요</div>
+                        <span class="slate-400 font-12">2024-08-21</span>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-nobg-slim font-16" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="material-symbols-outlined">more_vert</span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">이름 바꾸기</a></li>
+                            <li><a class="dropdown-item history-save" href="#">보관하기</a></li>
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#history-delete">삭제</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-center history-list-item">
+                    <div style="width: calc(100% - 20px);">
+                        <div class="text-truncate my-2">물어본 내용이 여기 요약되어 나오지요</div>
+                        <span class="slate-400 font-12">2024-08-21</span>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-nobg-slim font-16" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="material-symbols-outlined">more_vert</span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">이름 바꾸기</a></li>
+                            <li><a class="dropdown-item history-save" href="#">보관하기</a></li>
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#history-delete">삭제</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-center history-list-item">
+                    <div style="width: calc(100% - 20px);">
+                        <div class="text-truncate my-2">물어본 내용이 여기 요약되어 나오지요</div>
+                        <span class="slate-400 font-12">2024-08-21</span>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-nobg-slim font-16" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="material-symbols-outlined">more_vert</span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">이름 바꾸기</a></li>
+                            <li><a class="dropdown-item history-save" href="#">보관하기</a></li>
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#history-delete">삭제</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            
+        </div>
+        <!--//history-->
+
+        <!--//lnb-->
+        <!--contents area-->
+        <div id="main" class="flex-grow-1">
+            <!--히스토리버튼-->
+            <span class="sidebarbtn bg-slate-100"><span class="material-symbols-outlined">settings_ethernet</span></span>
+            
+            <!--contents body area-->
+            <div class="p-4 contents-body d-flex flex-column">
+                <div class="top-btn-group d-flex justify-content-end gap-2">
+                    <!-- <button class="btn btn-outline-gray"><span class="material-symbols-outlined">view_timeline</span><span class="ms-2">프롬프트 조회</span></button> -->
+                    <button class="btn btn-gradient" onclick="location.href='user_chat.html'" ><span class="material-symbols-outlined">add_comment</span><span class="ms-2">새 대화 생성</span></button>
+                </div>
+                <!--chat area-->
+                <div class="chat-area d-flex flex-fill justify-content-center">
+                    <div class="scroll">
+
+                        <div class="">
+                            <ul class="nav nav-underline gap-0">
+                                <li class="nav-item p-0" role="presentation">
+                                    <button class="nav-link active" id="savechat-tab" data-bs-toggle="pill" data-bs-target="#savechat" type="button" role="tab" aria-controls="savechat" aria-selected="true">보관된 대화</button>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="pills-tabContent">
+
+                                <div class="tab-pane fade show active mt-4" id="savechat" role="tabpanel" aria-labelledby="savechat-tab" tabindex="0">
+                                    <table class="table table-bordered table-hover text-center my-2">
+                                        <thead>
+                                            <tr>
+                                                <th>대화 명</th>
+                                                <th>생성 일자</th>
+                                                <th>조회</th>
+                                                <th>보관 해제</th>
+                                                <th>대화 삭제</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><a href="#">요약된 대화명이 여기 출력되겠지 요약된 대화명이 여기 출력되겠지 요약된 대화명이 여기 출력되겠지 요약된 대화명이 여기 출력되겠지</a></td>
+                                                <td>2024-10-18</td>
+                                                <td><button class="btn btn-icon-only btn-nobg-light btn-sm"><span class="material-symbols-outlined">search</span><span>조회</span></button></td>
+                                                <td><button class="btn btn-icon-only btn-nobg-light btn-sm" data-bs-toggle="modal" data-bs-target="#unsave"><span class="material-symbols-outlined">unpublished</span><span>보관 해제</span></button></td>
+                                                <td><button class="btn btn-icon-only btn-nobg-light btn-sm" data-bs-toggle="modal" data-bs-target="#delete-chat"><span class="material-symbols-outlined">delete_forever</span><span>대화 삭제</span></button></td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td><a href="#">요약된 대화명이 여기 출력되겠지</a></td>
+                                                <td>2024-10-18</td>
+                                                <td><button class="btn btn-icon-only btn-nobg-light btn-sm"><span class="material-symbols-outlined">search</span><span>조회</span></button></td>
+                                                <td><button class="btn btn-icon-only btn-nobg-light btn-sm" data-bs-toggle="modal" data-bs-target="#unsave"><span class="material-symbols-outlined">unpublished</span><span>보관 해제</span></button></td>
+                                                <td><button class="btn btn-icon-only btn-nobg-light btn-sm" data-bs-toggle="modal" data-bs-target="#delete-chat"><span class="material-symbols-outlined">delete_forever</span><span>대화 삭제</span></button></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="#">요약된 대화명이 여기 출력되겠지</a></td>
+                                                <td>2024-10-18</td>
+                                                <td><button class="btn btn-icon-only btn-nobg-light btn-sm"><span class="material-symbols-outlined">search</span><span>조회</span></button></td>
+                                                <td><button class="btn btn-icon-only btn-nobg-light btn-sm" data-bs-toggle="modal" data-bs-target="#unsave"><span class="material-symbols-outlined">unpublished</span><span>보관 해제</span></button></td>
+                                                <td><button class="btn btn-icon-only btn-nobg-light btn-sm" data-bs-toggle="modal" data-bs-target="#delete-chat"><span class="material-symbols-outlined">delete_forever</span><span>대화 삭제</span></button></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="#">요약된 대화명이 여기 출력되겠지</a></td>
+                                                <td>2024-10-18</td>
+                                                <td><button class="btn btn-icon-only btn-nobg-light btn-sm"><span class="material-symbols-outlined">search</span><span>조회</span></button></td>
+                                                <td><button class="btn btn-icon-only btn-nobg-light btn-sm" data-bs-toggle="modal" data-bs-target="#unsave"><span class="material-symbols-outlined">unpublished</span><span>보관 해제</span></button></td>
+                                                <td><button class="btn btn-icon-only btn-nobg-light btn-sm" data-bs-toggle="modal" data-bs-target="#delete-chat"><span class="material-symbols-outlined">delete_forever</span><span>대화 삭제</span></button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+        
+                                    <ul class="pagination mb-0">
+                                        <li class="page-item"><a class="page-link" href="#"><span class="material-symbols-outlined">arrow_back_ios</span></a></li>
+                                        <li class="page-item"><a class="page-link" href="#">이전</a></li>
+                                        <li class="page-item"><a class="page-link active" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">다음</a></li>
+                                        <li class="page-item"><a class="page-link" href="#"><span class="material-symbols-outlined">arrow_forward_ios</span></a></li>
+                                    </ul>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--chat area-->
+                    
+            </div>
+            <!--//contents body area-->
+        </div>
+        <!--//contents area-->
+      
+    </div>
+
+<!--히스토리 저장 알럿-->
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <div class="d-flex align-items-center me-3">
+        <span class="material-symbols-outlined me-2 h5 mb-0">check_circle</span>
+        <span>보관이 완료되었습니다. 보관된 대화 메뉴에서 확인 가능합니다.</span>
+    </div>
+    <button type="button" class="btn-close ms-3" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+<!--//히스토리 저장 알럿-->
+
+<!--히스토리 삭제 모달-->
+<div class="modal" id="history-delete" tabindex="-1" aria-labelledby="history-deleteLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body text-center">
+            
+            <h3 class="text-danger fw-bold mb-0"><span class="material-symbols-outlined">delete_forever</span></h3>
+            <h5 class="text-danger fw-bold">대화 삭제</h5>
+            
+            <p>선택한 대화를 삭제하시겠습니까?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-gray" data-bs-dismiss="modal">취소</button>
+            <button type="button" class="btn btn-dark">확인</button>
+          </div>
+        </div>
+    </div>
+</div>
+<!--//히스토리 삭제 모달끝-->
+
+<!--보관 해제 모달-->
+<div class="modal" id="unsave" tabindex="-1" aria-labelledby="unsaveLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body text-center">
+            
+            <h3 class="text-danger fw-bold mb-0"><span class="material-symbols-outlined">unpublished</span></h3>
+            <h5 class="text-danger fw-bold">보관 해제</h5>
+            <p>해당 대화의 보관을 해제하시겠습니까?</p>
+            <p class="text-danger">※ 최근 히스토리 내역에는 유지됩니다. ※</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-gray" data-bs-dismiss="modal">취소</button>
+            <button type="button" class="btn btn-dark">확인</button>
+          </div>
+        </div>
+    </div>
+</div>
+<!--//보관 해제 모달끝-->
+
+<!--대화 삭제 모달-->
+<div class="modal" id="delete-chat" tabindex="-1" aria-labelledby="delete-chatLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body text-center">
+            
+            <h3 class="text-danger fw-bold mb-0"><span class="material-symbols-outlined">delete_forever</span></h3>
+            <h5 class="text-danger fw-bold">대화 삭제</h5>
+            <p>해당 대화를 삭제하시겠습니까?</p>
+            <p class="text-danger">※ 최근 히스토리 내역에서도 삭제됩니다. ※</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-gray" data-bs-dismiss="modal">취소</button>
+            <button type="button" class="btn btn-dark">확인</button>
+          </div>
+        </div>
+    </div>
+</div>
+<!--//대화 삭제 모달끝-->
+
+
+<!--모바일 별 브라우저 높이 감지-->
+<script>
+    function setFullHeight() {
+      const content = document.getElementById('content');
+      content.style.height = `${window.innerHeight}px`;
+    }
+    window.addEventListener('load', setFullHeight);
+    window.addEventListener('resize', setFullHeight);
+</script>
+
+
+<!--알럿-->
+<script>
+    $(".history-save").click(function(){
+        $(".alert").show('fast');
+        setTimeout(function(){
+            $(".alert").hide('fast');
+        }, 5000);
+        });
+        $(".close").click(function(){
+            $(".alert").hide('fast');
+    });
+</script>
+
+
+<!--팝오버-->
+<script>
+    $(function () {
+      $('[data-toggle="popoverD1"]').popover({
+          html : true, 
+          content: function() {
+            return $("#popover-content-D1").html();
+          },
+          title: function() {
+            return $("#popover-title-D1").html();
+          }
+      });
+  
+     //close popover outside click 
+      $('body').on('click', function (e) {
+          $('[data-toggle="popoverD1"]').each(function () {
+              if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+                  $(this).popover('hide');
+              }
+          });
+      });
+    })
+</script>
+
+<!--히스토리-->
+<script>
+    $(document).ready(function(){
+        $('.sidebarbtn').click(function(){
+        $('#History, #main').toggleClass('active');
+        })
+        $('.closebtn').click(function(){
+            $('#History, #main').removeClass('active');    
+        })
+    })
+</script>
+    
+</body>
+
+
+</html>

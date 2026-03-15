@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>AXworks</title>
+
+
+    <!--js-->
+    <script type="text/javascript" src="assets/js/jquery-3.7.1.min.js"></script><!--jquery-->
+
+    <!--bootstrap-->
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap-5.3.3/dist/css/bootstrap.min.css" />
+    <script type="text/javascript" src="assets/bootstrap-5.3.3/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/bootstrap-5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!--css-->
+    <link rel="stylesheet" type="text/css" href="assets/css/custom.css" /> <!--부트스트랩 커스텀-->
+
+    <!--Material+Icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+
+    <link rel="icon" href="assets/images/favicon.ico">
+
+</head>
+
+<body>
+    <div>
+        <div class="d-flex justify-content-center align-items-center height-100vh">
+            <div class="d-flex flex-column pb-5 width-320px">
+                <div class="text-center mb-5">
+                    <img src="assets/images/AI-W logo.svg" alt="logo image" width="250px" />
+                </div>
+                <div class="d-grid gap-3 w-100">
+                    <!--상태 문구 나오는 폼-->
+                    <!-- <div>
+                        <input type="text" class="form-control form-control-lg is-valid" id="validationServer01" type="text" placeholder="아이디(이메일)를 입력하세요.">
+                        <div class="valid-feedback">
+                        정상 메세지
+                        </div>
+                    </div>
+                    <div>
+                        <input type="text" class="form-control form-control-lg is-invalid" id="validationServer05" aria-describedby="validationServer05Feedback" type="text" placeholder="비밀번호를 입력하세요.">
+                        <div id="validationServer05Feedback" class="invalid-feedback">
+                        오류 메세지
+                        </div>
+                    </div> -->
+                    <!--///상태 문구 나오는 폼-->
+                    <!--로그인 입력폼-->
+                    <input class="form-control form-control-lg" type="text" placeholder="아이디(이메일)를 입력하세요." aria-label="아이디">
+                    <input class="form-control form-control-lg" type="text" placeholder="비밀번호를 입력하세요." aria-label="비밀번호">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="IdSave">
+                        <label class="form-check-label" for="IdSave">
+                          계정 저장
+                        </label>
+                    </div>
+                    <!--//로그인 입력폼-->
+                    <!--새 비밀번호 설정-->
+                    <!-- <div class="text-center text-danger">
+                        <span class="material-symbols-outlined font-16">error</span><br/>
+                        <span>120</span>일간 비밀번호가 미변경 되었습니다.<br/>
+                        새로운 비밀번호로 변경하세요.
+                    </div>
+                    <input class="form-control form-control-lg" type="text" placeholder="현재 비밀번호를 입력하세요" aria-label="현재 비밀번호">
+                    <input class="form-control form-control-lg" type="text" placeholder="새 비밀번호를 입력하세요." aria-label="새비밀번호">
+                    <input class="form-control form-control-lg" type="text" placeholder="새 비밀번호 확인을 위해 재입력하세요." aria-label="새비밀번호 확인"> -->
+                    <!--새 비밀번호 설정-->
+                    <!-- <div class="text-center slate-500 font-15">
+                        <p class="mb-1">다른 기기 <b>(N.N.N.N)</b> 에서 로그인 상태입니다.</p>
+                        <p>기존 연결을 끊고 접속하시겠습니까?</p>
+                    </div>    -->
+                    <!-- <div class="text-center slate-500 font-15">
+                        <p class="mb-2">30분 동안 활동이 없어<br/>자동으로 로그아웃되었습니다.</p>
+                        <p>다시 로그인 후 안전하게 이용하세요.</p>
+                    </div>        -->
+                </div>
+                <!--login 버튼-->
+                <div class="d-grid mt-4">
+                    <button class="btn btn-xlg btn-gradient" onclick="location.href='user_chat.html'" type="button" >로그인</button>
+                </div>
+                <!--//login 버튼-->
+                <!-- <div class="d-flex mt-5">
+                    <div class="w-50 d-grid pe-1"><button class="btn btn-lg btn-block btn-secondary" type="button" >다음에 변경하기</button></div>
+                    <div class="w-50 d-grid ps-1"><button class="btn btn-lg btn-dark" type="button" onclick="location.href='user_chat.html'">변경 후 로그인하기</button></div>
+                </div> -->
+                <!-- <div class="d-flex mt-5">
+                     <div class="w-50 d-grid pe-1"><button class="btn btn-lg btn-block btn-secondary" type="button" onclick="location.href='login.html'">로그인 페이지로</button></div>
+                     <div class="w-50 d-grid ps-1"><button class="btn btn-lg btn-dark" type="button" >확인</button></div>
+                </div> -->
+                <!-- <div class="d-grid mt-5">
+                    <button class="btn btn-lg btn-block btn-dark" type="button" onclick="location.href='login.html'">로그인 페이지로</button>
+                </div> -->
+            </div>
+            
+        </div>
+        <div class="text-center font-12 slate-400" style="margin-top: -50px">
+            <p>로그인 계정 및 오류는 관리자에 문의바랍니다.</p>
+            <p class="mt-1">©JIRANDATA. All rights reserved</p>
+        </div>
+    </div>
+
+
+<!--모바일 별 브라우저 높이 감지-->
+<script>
+    function setFullHeight() {
+      const content = document.getElementById('content');
+      content.style.height = `${window.innerHeight}px`;
+    }
+    window.addEventListener('load', setFullHeight);
+    window.addEventListener('resize', setFullHeight);
+</script>
+
+</body>
+
+
+</html>

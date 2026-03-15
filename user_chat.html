@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>AXworks</title>
+
+
+    <!--js-->
+    <script type="text/javascript" src="assets/js/jquery-3.7.1.min.js"></script><!--jquery-->
+
+    <!--bootstrap-->
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap-5.3.3/dist/css/bootstrap.min.css" />
+    <script type="text/javascript" src="assets/bootstrap-5.3.3/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/bootstrap-5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!--css-->
+    <link rel="stylesheet" type="text/css" href="assets/css/custom.css" /> <!--부트스트랩 커스텀-->
+
+    <!--Material+Icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+    
+    <link rel="icon" href="assets/images/favicon.ico">
+
+</head>
+
+<body class="">
+    <div class="user-page mx-auto full-height">
+       
+        <!--lnb-->
+        <div class="lnb min-vh-100 text-center pt-4 position-fixed">
+            <img class="logo" src="assets/images/AI-W logo simbol.svg" alt="logo image" width="50px"  onclick="location.href='user_chat.html'"  />
+            
+            
+            <!--mobile nav-->
+            <div class="d-flex align-items-center">
+                <button class="btn btn-nobg-light m-nav-button me-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"><span class="material-symbols-outlined">menu</span></button>
+                <div class="m-logo"><img src="assets/images/AI-W logo wordtype.svg" alt="AXworks" height="24px;" onclick="location.href='user_chat.html'" ></div>
+                <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+                    <div class="offcanvas-header">
+                        <button class="btn btn-nobg-light m-nav-button me-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"><span class="material-symbols-outlined">menu</span></button>
+                        <div class="m-logo"><img src="assets/images/AI-W logo wordtype.svg" alt="AXworks" height="24px;"></div>
+                    </div>
+    
+                    <div class="d-flex flex-column p-3">
+                        <ul class="main-menu user">
+                            <li class="active"><a href="user_service.html"><span class="menu-icon menu1"></span><span>서비스</span></a></li>
+                            <li class=""><a href="user_save-chat.html"><span class="menu-icon menu2"></span><span>보관된 대화</span></a></li>
+                            <li class=""><a href="user_setting.html"><span class="menu-icon menu3"></span><span>설정</span></a></li>
+                            <li class=""><a href="관리자페이지-대시보드.html"><span class="menu-icon menu4"></span><span>관리자</span></a></li>
+                        </ul>
+                    </div>
+                    
+                    <h6 class="fw-bold text-start ps-3 mb-0">최근 히스토리</h6> 
+
+                    <div class="offcanvas-body pt-0">
+                        <div class="m-sidenav">
+                            <div class="history-list">
+                                <div class="d-flex align-items-center history-list-item">
+                                    <div style="width: calc(100% - 20px);">
+                                        <div class="text-truncate my-2">물어본 내용이 여기 요약되어 나오지요 물어본 내용이 여기 요약되어 나오지요</div>
+                                        <span class="slate-400 font-12">2024-08-21</span>
+                                    </div>
+                                    <div class="dropdown">
+                                        <button class="btn btn-nobg-slim font-16" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <span class="material-symbols-outlined">more_vert</span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">이름 바꾸기</a></li>
+                                            <li><a class="dropdown-item history-save" href="#">보관하기</a></li>
+                                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#history-delete">삭제</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+        
+                                <div class="d-flex align-items-center history-list-item">
+                                    <div style="width: calc(100% - 20px);">
+                                        <div class="text-truncate my-2">물어본 내용이 여기 요약되어 나오지요</div>
+                                        <span class="slate-400 font-12">2024-08-21</span>
+                                    </div>
+                                    <div class="dropdown">
+                                        <button class="btn btn-nobg-slim font-16" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <span class="material-symbols-outlined">more_vert</span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">이름 바꾸기</a></li>
+                                            <li><a class="dropdown-item history-save" href="#">보관하기</a></li>
+                                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#history-delete">삭제</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+        
+                                <div class="d-flex align-items-center history-list-item">
+                                    <div style="width: calc(100% - 20px);">
+                                        <div class="text-truncate my-2">물어본 내용이 여기 요약되어 나오지요</div>
+                                        <span class="slate-400 font-12">2024-08-21</span>
+                                    </div>
+                                    <div class="dropdown">
+                                        <button class="btn btn-nobg-slim font-16" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <span class="material-symbols-outlined">more_vert</span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">이름 바꾸기</a></li>
+                                            <li><a class="dropdown-item history-save" href="#">보관하기</a></li>
+                                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#history-delete">삭제</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center history-list-item">
+                                    <div style="width: calc(100% - 20px);">
+                                        <div class="text-truncate my-2">물어본 내용이 여기 요약되어 나오지요</div>
+                                        <span class="slate-400 font-12">2024-08-21</span>
+                                    </div>
+                                    <div class="dropdown">
+                                        <button class="btn btn-nobg-slim font-16" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <span class="material-symbols-outlined">more_vert</span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">이름 바꾸기</a></li>
+                                            <li><a class="dropdown-item history-save" href="#">보관하기</a></li>
+                                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#history-delete">삭제</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center history-list-item">
+                                    <div style="width: calc(100% - 20px);">
+                                        <div class="text-truncate my-2">물어본 내용이 여기 요약되어 나오지요</div>
+                                        <span class="slate-400 font-12">2024-08-21</span>
+                                    </div>
+                                    <div class="dropdown">
+                                        <button class="btn btn-nobg-slim font-16" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <span class="material-symbols-outlined">more_vert</span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">이름 바꾸기</a></li>
+                                            <li><a class="dropdown-item history-save" href="#">보관하기</a></li>
+                                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#history-delete">삭제</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center history-list-item">
+                                    <div style="width: calc(100% - 20px);">
+                                        <div class="text-truncate my-2">물어본 내용이 여기 요약되어 나오지요</div>
+                                        <span class="slate-400 font-12">2024-08-21</span>
+                                    </div>
+                                    <div class="dropdown">
+                                        <button class="btn btn-nobg-slim font-16" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <span class="material-symbols-outlined">more_vert</span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">이름 바꾸기</a></li>
+                                            <li><a class="dropdown-item history-save" href="#">보관하기</a></li>
+                                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#history-delete">삭제</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+            <!--//mobile nav-->
+
+            <div class="menu-group d-flex flex-column px-2 py-4">
+                <ul class="main-menu user">
+                            <li class="active"><a href="user_service.html"><span class="menu-icon menu1"></span><span>서비스</span></a></li>
+                            <li class=""><a href="user_save-chat.html"><span class="menu-icon menu2"></span><span>보관된 대화</span></a></li>
+                            <li class=""><a href="user_setting.html"><span class="menu-icon menu3"></span><span>설정</span></a></li>
+                            <li class=""><a href="관리자페이지-대시보드.html"><span class="menu-icon menu4"></span><span>관리자</span></a></li>
+                        </ul>
+                <ul class="setting-menu mt-auto mb-0">
+                    <li><a type="button" class="btn btn-sm btn-nobg-light d-flex align-items-center justify-content-center" href="#"><span class="material-symbols-outlined me-1">logout</span><span>로그아웃</span></a></li>                           
+                </ul>
+            </div>
+        </div>
+        <!--history-->
+        <div id="History" class="sidenav">
+            <div class="p-2 mt-4">
+                <h5 class="fw-bold ms-1 mb-3">최근 히스토리</h5> 
+
+                <div class="d-flex align-items-center history-list-item">
+                    <div style="width: calc(100% - 20px);">
+                        <div class="text-truncate my-2">물어본 내용이 여기 요약되어 나오지요</div>
+                        <span class="slate-400 font-12">2024-08-21</span>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-nobg-slim font-16" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="material-symbols-outlined">more_vert</span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">이름 바꾸기</a></li>
+                            <li><a class="dropdown-item history-save" href="#">보관하기</a></li>
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#history-delete">삭제</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-center history-list-item">
+                    <div style="width: calc(100% - 20px);">
+                        <div class="text-truncate my-2">물어본 내용이 여기 요약되어 나오지요</div>
+                        <span class="slate-400 font-12">2024-08-21</span>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-nobg-slim font-16" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="material-symbols-outlined">more_vert</span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">이름 바꾸기</a></li>
+                            <li><a class="dropdown-item history-save" href="#">보관하기</a></li>
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#history-delete">삭제</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-center history-list-item">
+                    <div style="width: calc(100% - 20px);">
+                        <div class="text-truncate my-2">물어본 내용이 여기 요약되어 나오지요</div>
+                        <span class="slate-400 font-12">2024-08-21</span>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-nobg-slim font-16" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="material-symbols-outlined">more_vert</span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">이름 바꾸기</a></li>
+                            <li><a class="dropdown-item history-save" href="#">보관하기</a></li>
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#history-delete">삭제</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            
+        </div>
+        <!--//history-->
+
+        <!--//lnb-->
+        <!--contents area-->
+        <div id="main" class="flex-grow-1">
+            <!--히스토리버튼-->
+            <span class="sidebarbtn bg-slate-100"><span class="material-symbols-outlined">settings_ethernet</span></span>
+            
+            <!--contents body area-->
+            <div class="p-4 contents-body d-flex flex-column">
+                <div class="top-btn-group d-flex justify-content-end gap-2">
+                    <!-- <button class="btn btn-outline-gray"><span class="material-symbols-outlined">view_timeline</span><span class="ms-2">프롬프트 조회</span></button> -->
+                    <button class="btn btn-gradient" onclick="location.href='user_chat.html'" ><span class="material-symbols-outlined">add_comment</span><span class="ms-2">새 대화 생성</span></button>
+                </div>
+                <!--chat area-->
+                <div class="chat-area d-flex flex-fill justify-content-center">
+                    <div class="scroll">
+                        <div class="chat-box">
+                            <!--챗팅 전 첫 화면 출력-->
+                            <span class="welcome"></span>
+                            <!--//챗팅 전 첫 화면 출력-->
+                            <div class="AI-W">
+                                <span class="avatar"></span><span class="chat">안녕하세요? 궁금한 점이 있으면 무엇이든 물어보세요.</span>
+                            </div>
+                            <div class="USER">
+                                <span class="avatar"></span><span class="chat">길소연이 누구야? 길소연이 누구야? 길소연이 누구야? 길소연이 누구야? 길소연이 누구야?</span>
+                            </div>
+                            <div class="AI-W"> 
+                                <span class="avatar"></span>
+                                <span class="chat">
+                                    <p>위의 내용으로 문제가 해결되지 않는다면, 다음과 같은 방법으로 해결책을 찾아볼 수 있습니다.</p>
+                                    <ul>
+                                        <li>
+                                            세탁기 사용 설명서를 참고: 세탁기 모델에 따라 고장 원인과 해결 방법이 다를 수 있으므로 사용 설명서를 참고해 보세요.
+                                        </li>
+                                        <li>
+                                            제조사 고객센터에 문의: 세탁기 제조사 고객센터에 전화하거나 홈페이지를 통해 문의하면 전문가의 도움을 받을 수 있습니다.
+                                        </li>
+                                        <li>
+                                            전문 수리 기사에게 의뢰: 간단한 문제는 직접 해결할 수 있지만, 복잡한 문제는 전문 수리 기사에게 의뢰하는 것이 좋습니다.
+                                    세탁기 고장 원인을 정확하게 파악하기 위해 다음과 같은 정보를 알려주시면 더욱 자세한 도움을 드릴 수 있습니다.
+                                        </li>
+                                        <li>
+                                            팁: 세탁기는 주기적인 관리가 필요합니다. 세탁조 청소, 필터 청소, 수평 확인 등을 꾸준히 해주면 고장을 예방하고 오래 사용할 수 있습니다.
+                                        </li>
+                                    </ul>
+                                    
+                                    <div class="my-4 slate-500">참고문서: <a href="#">참고문서 다운로드.pdf</a></div>
+
+                                    <div>
+                                        <button class="btn btn-lg btn-nobg-light btn-icon-only" title="클립보드에 복사하기">content_copy</button>
+                                    </div>
+                                    
+                                </span>
+                            </div>
+                            <div class="AI-W"> 
+                                <span class="avatar"></span>
+                                <span class="chat">
+                                    <div class="loading-loop">
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                    </div>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--chat area-->
+
+                <div class="chat-input-area">
+                    <!--질문카테고리-->
+                    <div class="q-category d-flex align-items-center justify-content-center">
+                        <div class="active">일반</div>
+                        <div>사내 규정 및 지침</div>
+                        <div>외부 자료 조사</div>
+                        <div>업로드 문서 요약</div>
+                        <div>업로드 문서 교정</div>
+                    </div>
+                    <!--//질문카테고리-->
+                    <div class="chat-input-wrap">
+                        <textarea id="textarea" rows="1" class="form-control form-control-xl chat-input" id="exampleFormControlTextarea1" placeholder="궁금한점이 있으면, 무엇이든 물어보세요."></textarea>
+                        <div class="d-flex flex-wrap align-items-center">
+                            <!--첨부파일이 들어갔을때-->
+                            <div class="attach-file-area">
+                                <div class="attach-file d-flex align-items-center"><span class="text-truncate">첨부파일이 여기 첨부파일이 여기 첨부파일이 여기 첨부파일이 여기.pdf (34KB)</span><a class="btn btn-sm btn-nobg-slim"><span class="material-symbols-rounded">close</span></a></div>
+                            </div>
+                            <!--//첨부파일이 들어갔을때-->
+                            <div class="text-end ms-auto">
+                                <button class="btn btn-lg btn-icon-only btn-nobg-light"><span class="material-symbols-outlined">attach_file</span></button>
+                                <button class="btn btn-lg btn-icon-only btn-nobg-light chatGPT">
+                                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 24 24">
+                                        <path d="M 11.134766 1.0175781 C 10.87173 1.0049844 10.606766 1.0088281 10.337891 1.0332031 C 8.1135321 1.2338971 6.3362243 2.7940749 5.609375 4.8203125 C 3.8970488 5.1768339 2.4372723 6.3048522 1.671875 7.9570312 C 0.73398779 9.9840533 1.1972842 12.30076 2.5878906 13.943359 C 2.0402591 15.605222 2.2856216 17.434472 3.3320312 18.921875 C 4.6182099 20.747762 6.8565685 21.504693 8.9746094 21.121094 C 10.139659 22.427613 11.84756 23.130452 13.662109 22.966797 C 15.886521 22.766098 17.663809 21.205995 18.390625 19.179688 C 20.102972 18.823145 21.563838 17.695991 22.330078 16.042969 C 23.268167 14.016272 22.805368 11.697142 21.414062 10.054688 C 21.960697 8.3934373 21.713894 6.5648387 20.667969 5.078125 C 19.38179 3.2522378 17.143432 2.4953068 15.025391 2.8789062 C 14.032975 1.7660011 12.646869 1.0899755 11.134766 1.0175781 z M 11.025391 2.5136719 C 11.921917 2.5488523 12.754993 2.8745885 13.431641 3.421875 C 13.318579 3.4779175 13.200103 3.5164101 13.089844 3.5800781 L 9.0761719 5.8964844 C 8.7701719 6.0724844 8.5801719 6.3989531 8.5761719 6.7519531 L 8.5175781 12.238281 L 6.75 11.189453 L 6.75 6.7851562 C 6.75 4.6491563 8.3075938 2.74225 10.433594 2.53125 C 10.632969 2.5115 10.83048 2.5060234 11.025391 2.5136719 z M 16.125 4.2558594 C 17.398584 4.263418 18.639844 4.8251563 19.417969 5.9101562 C 20.070858 6.819587 20.310242 7.9019929 20.146484 8.9472656 C 20.041416 8.8773528 19.948163 8.794144 19.837891 8.7304688 L 15.826172 6.4140625 C 15.520172 6.2380625 15.143937 6.2352031 14.835938 6.4082031 L 10.052734 9.1035156 L 10.076172 7.0488281 L 13.890625 4.8476562 C 14.584375 4.4471562 15.36085 4.2513242 16.125 4.2558594 z M 5.2832031 6.4726562 C 5.2752078 6.5985272 5.25 6.7203978 5.25 6.8476562 L 5.25 11.480469 C 5.25 11.833469 5.4362344 12.159844 5.7402344 12.339844 L 10.464844 15.136719 L 8.6738281 16.142578 L 4.859375 13.939453 C 3.009375 12.871453 2.1365781 10.567094 3.0175781 8.6210938 C 3.4795583 7.6006836 4.2963697 6.8535791 5.2832031 6.4726562 z M 15.326172 7.8574219 L 19.140625 10.060547 C 20.990625 11.128547 21.865375 13.432906 20.984375 15.378906 C 20.522287 16.399554 19.703941 17.146507 18.716797 17.527344 C 18.724764 17.401695 18.75 17.279375 18.75 17.152344 L 18.75 12.521484 C 18.75 12.167484 18.563766 11.840156 18.259766 11.660156 L 13.535156 8.8632812 L 15.326172 7.8574219 z M 12.025391 9.7109375 L 13.994141 10.878906 L 13.966797 13.167969 L 11.974609 14.287109 L 10.005859 13.121094 L 10.03125 10.832031 L 12.025391 9.7109375 z M 15.482422 11.761719 L 17.25 12.810547 L 17.25 17.214844 C 17.25 19.350844 15.692406 21.25775 13.566406 21.46875 C 12.449968 21.579344 11.392114 21.244395 10.568359 20.578125 C 10.681421 20.522082 10.799897 20.48359 10.910156 20.419922 L 14.923828 18.103516 C 15.229828 17.927516 15.419828 17.601047 15.423828 17.248047 L 15.482422 11.761719 z M 13.947266 14.896484 L 13.923828 16.951172 L 10.109375 19.152344 C 8.259375 20.220344 5.8270313 19.825844 4.5820312 18.089844 C 3.9291425 17.180413 3.6897576 16.098007 3.8535156 15.052734 C 3.9587303 15.122795 4.0516754 15.205719 4.1621094 15.269531 L 8.1738281 17.585938 C 8.4798281 17.761938 8.8560625 17.764797 9.1640625 17.591797 L 13.947266 14.896484 z"></path>
+                                    </svg>
+                                </button>
+                                <!--챗GPT 답변 진행중일때-->
+                                <!-- <button class="btn btn-lg btn-icon-only btn-nobg-light chatGPT active">
+                                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 24 24">
+                                        <path d="M 11.134766 1.0175781 C 10.87173 1.0049844 10.606766 1.0088281 10.337891 1.0332031 C 8.1135321 1.2338971 6.3362243 2.7940749 5.609375 4.8203125 C 3.8970488 5.1768339 2.4372723 6.3048522 1.671875 7.9570312 C 0.73398779 9.9840533 1.1972842 12.30076 2.5878906 13.943359 C 2.0402591 15.605222 2.2856216 17.434472 3.3320312 18.921875 C 4.6182099 20.747762 6.8565685 21.504693 8.9746094 21.121094 C 10.139659 22.427613 11.84756 23.130452 13.662109 22.966797 C 15.886521 22.766098 17.663809 21.205995 18.390625 19.179688 C 20.102972 18.823145 21.563838 17.695991 22.330078 16.042969 C 23.268167 14.016272 22.805368 11.697142 21.414062 10.054688 C 21.960697 8.3934373 21.713894 6.5648387 20.667969 5.078125 C 19.38179 3.2522378 17.143432 2.4953068 15.025391 2.8789062 C 14.032975 1.7660011 12.646869 1.0899755 11.134766 1.0175781 z M 11.025391 2.5136719 C 11.921917 2.5488523 12.754993 2.8745885 13.431641 3.421875 C 13.318579 3.4779175 13.200103 3.5164101 13.089844 3.5800781 L 9.0761719 5.8964844 C 8.7701719 6.0724844 8.5801719 6.3989531 8.5761719 6.7519531 L 8.5175781 12.238281 L 6.75 11.189453 L 6.75 6.7851562 C 6.75 4.6491563 8.3075938 2.74225 10.433594 2.53125 C 10.632969 2.5115 10.83048 2.5060234 11.025391 2.5136719 z M 16.125 4.2558594 C 17.398584 4.263418 18.639844 4.8251563 19.417969 5.9101562 C 20.070858 6.819587 20.310242 7.9019929 20.146484 8.9472656 C 20.041416 8.8773528 19.948163 8.794144 19.837891 8.7304688 L 15.826172 6.4140625 C 15.520172 6.2380625 15.143937 6.2352031 14.835938 6.4082031 L 10.052734 9.1035156 L 10.076172 7.0488281 L 13.890625 4.8476562 C 14.584375 4.4471562 15.36085 4.2513242 16.125 4.2558594 z M 5.2832031 6.4726562 C 5.2752078 6.5985272 5.25 6.7203978 5.25 6.8476562 L 5.25 11.480469 C 5.25 11.833469 5.4362344 12.159844 5.7402344 12.339844 L 10.464844 15.136719 L 8.6738281 16.142578 L 4.859375 13.939453 C 3.009375 12.871453 2.1365781 10.567094 3.0175781 8.6210938 C 3.4795583 7.6006836 4.2963697 6.8535791 5.2832031 6.4726562 z M 15.326172 7.8574219 L 19.140625 10.060547 C 20.990625 11.128547 21.865375 13.432906 20.984375 15.378906 C 20.522287 16.399554 19.703941 17.146507 18.716797 17.527344 C 18.724764 17.401695 18.75 17.279375 18.75 17.152344 L 18.75 12.521484 C 18.75 12.167484 18.563766 11.840156 18.259766 11.660156 L 13.535156 8.8632812 L 15.326172 7.8574219 z M 12.025391 9.7109375 L 13.994141 10.878906 L 13.966797 13.167969 L 11.974609 14.287109 L 10.005859 13.121094 L 10.03125 10.832031 L 12.025391 9.7109375 z M 15.482422 11.761719 L 17.25 12.810547 L 17.25 17.214844 C 17.25 19.350844 15.692406 21.25775 13.566406 21.46875 C 12.449968 21.579344 11.392114 21.244395 10.568359 20.578125 C 10.681421 20.522082 10.799897 20.48359 10.910156 20.419922 L 14.923828 18.103516 C 15.229828 17.927516 15.419828 17.601047 15.423828 17.248047 L 15.482422 11.761719 z M 13.947266 14.896484 L 13.923828 16.951172 L 10.109375 19.152344 C 8.259375 20.220344 5.8270313 19.825844 4.5820312 18.089844 C 3.9291425 17.180413 3.6897576 16.098007 3.8535156 15.052734 C 3.9587303 15.122795 4.0516754 15.205719 4.1621094 15.269531 L 8.1738281 17.585938 C 8.4798281 17.761938 8.8560625 17.764797 9.1640625 17.591797 L 13.947266 14.896484 z"></path>
+                                    </svg>
+                                </button> -->
+                                <!--//챗GPT 답변 진행중일때-->
+                                <button class="btn btn-lg btn-icon-only btn-nobg-light"><span class="material-symbols-outlined">play_arrow</span></button>
+                                <!--답변 진행중일때-->
+                                <!-- <button class="btn btn-lg btn-icon-only btn-nobg-light stop active"><span class="material-symbols-outlined">stop</span></button> -->
+                                <!--//답변 진행중일때-->
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="text-center text-secondary mt-3">모든 답변은 AI 기반으로 제공되며, 일부는 부정확하거나 최신 정보가 아닐 수 있습니다.</p>
+                        
+                </div>
+                    
+            </div>
+            <!--//contents body area-->
+        </div>
+        <!--//contents area-->
+      
+    </div>
+
+<!--히스토리 저장 알럿-->
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <div class="d-flex align-items-center me-3">
+        <span class="material-symbols-outlined me-2 h5 mb-0">check_circle</span>
+        <span>보관이 완료되었습니다. 보관된 대화 메뉴에서 확인 가능합니다.</span>
+    </div>
+    <button type="button" class="btn-close ms-3" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+<!--//히스토리 저장 알럿-->
+
+<!--히스토리 삭제 모달-->
+<div class="modal" id="history-delete" tabindex="-1" aria-labelledby="history-deleteLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body text-center">
+            
+            <h3 class="text-danger fw-bold mb-0"><span class="material-symbols-outlined">delete_forever</span></h3>
+            <h5 class="text-danger fw-bold">대화 삭제</h5>
+            
+            <p>선택한 대화를 삭제하시겠습니까?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-gray" data-bs-dismiss="modal">취소</button>
+            <button type="button" class="btn btn-dark">확인</button>
+          </div>
+        </div>
+    </div>
+</div>
+<!--//히스토리 삭제 모달끝-->
+
+<!--모바일 별 브라우저 높이 감지-->
+<script>
+    function setFullHeight() {
+      const content = document.getElementById('content');
+      content.style.height = `${window.innerHeight}px`;
+    }
+    window.addEventListener('load', setFullHeight);
+    window.addEventListener('resize', setFullHeight);
+</script>
+
+
+<!--타이핑 효과 > 화면 에러나는데 왜 나는걸까요?-->
+<script>
+    const content = "🙂 \n 환영합니다. 지란지교데이터 최정현님! \n 무엇을 도와드릴까요?";
+    const text = document.querySelector(".welcome");
+    let i = 0;
+
+    function typing(){
+        if (i < content.length) {
+        let txt = content.charAt(i);
+        text.innerHTML += txt=== "\n" ? "<br/>": txt;
+        i++;
+        }
+    }
+    setInterval(typing, 50)
+</script>
+
+
+
+<!--자동 높이 조절 textarea-->
+<script>
+    const DEFAULT_HEIGHT = 3; 
+    const $textarea = document.querySelector('#textarea');
+    $textarea.oninput = (event) => {
+    const $target = event.target;
+    $target.style.height = 0;
+    $target.style.height = DEFAULT_HEIGHT + $target.scrollHeight + 'px';
+    };
+</script>
+
+<!--알럿-->
+<script>
+    $(".history-save").click(function(){
+        $(".alert").show('fast');
+        setTimeout(function(){
+            $(".alert").hide('fast');
+        }, 5000);
+        });
+        $(".close").click(function(){
+            $(".alert").hide('fast');
+    });
+</script>
+
+
+<!--팝오버-->
+<script>
+    $(function () {
+      $('[data-toggle="popoverD1"]').popover({
+          html : true, 
+          content: function() {
+            return $("#popover-content-D1").html();
+          },
+          title: function() {
+            return $("#popover-title-D1").html();
+          }
+      });
+  
+     //close popover outside click 
+      $('body').on('click', function (e) {
+          $('[data-toggle="popoverD1"]').each(function () {
+              if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+                  $(this).popover('hide');
+              }
+          });
+      });
+    })
+</script>
+
+<!--히스토리-->
+<script>
+    $(document).ready(function(){
+        $('.sidebarbtn').click(function(){
+        $('#History, #main').toggleClass('active');
+        })
+        $('.closebtn').click(function(){
+            $('#History, #main').removeClass('active');    
+        })
+    })
+</script>
+    
+</body>
+
+
+</html>

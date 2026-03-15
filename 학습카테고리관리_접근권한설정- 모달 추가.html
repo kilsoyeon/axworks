@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1024">
+
+    <title>AXworks</title>
+
+
+    <!--js-->
+    <script type="text/javascript" src="assets/js/jquery-3.7.1.min.js"></script><!--jquery-->
+
+    <!--bootstrap-->
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap-5.3.3/dist/css/bootstrap.min.css" />
+    <script type="text/javascript" src="assets/bootstrap-5.3.3/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/bootstrap-5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!--css-->
+    <link rel="stylesheet" type="text/css" href="assets/css/custom.css" /> <!--부트스트랩 커스텀-->
+
+    <!--Material+Icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+
+    <link rel="icon" href="assets/images/favicon.ico">
+
+</head>
+
+<body class="bg-slate-50">
+    <div class="admin-page bg-slate-50 mx-auto">
+            <div class="d-flex">
+                <!--lnb-->
+                <div class="width-100px bg-slate-900 min-vh-100 text-center pt-4 position-fixed">
+                    <img src="assets/images/AI-W logo simbol.svg" alt="logo image" width="50px" />
+                    <div class="menu-group d-flex flex-column px-2 py-4" style="height: calc(100vh - 75px);">
+                        <ul class="main-menu admin">
+                            <li><a href="관리자페이지-대시보드.html"><span class="menu-icon menu1"></span><span>대시보드</span></a></li>
+                            <li class="active"><a href="admin_manage-study-model.html"><span class="menu-icon menu2"></span><span>학습 관리</span></a></li>
+                            <li><a href="admin_manage-service.html"><span class="menu-icon menu3"></span><span>서비스 관리</span></a></li>
+                            <li><a href="정책관리_개인민감정보정책.html"><span class="menu-icon menu6"></span><span>정책 관리</span></a></li>
+                            <li><a href="admin_manage-history.html"><span class="menu-icon menu4"></span><span>이력 관리</span></a></li>
+                            <li><a href="관리자페이지-피드백관리.html"><span class="menu-icon menu7"></span><span>피드백 관리</span></a></li>
+                            <li><a href="user_chat.html"><span class="menu-icon menu5"></span><span>사용자 페이지</span></a></li>
+                        </ul>
+                        
+                        <ul class="setting-menu mt-auto mb-0 dropup">
+                            <li><a type="button" class="btn btn-lg btn-icon-only btn-nobg-dark" href="admin_settings-administrator.html" title="환경설정"><span class="icon-setting"></span></a></li>
+                            <li><a type="button" class="btn btn-lg btn-icon-only btn-nobg-dark" href="admin-log.html" title="감사로그"><span class="icon-log"></span></a></li>
+                            <div class="dropup">
+                                <a type="button" class="btn btn-lg btn-icon-only btn-nobg-dark" data-bs-toggle="dropdown" aria-expanded="false" title="최정현 님"><span class="icon-user"></span></a>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li><a class="dropdown-item" href="#">매뉴얼 다운로드</a></li>
+                                    <li><a class="dropdown-item" href="#">로그아웃</a></li>
+                                </ul>
+                            </div>
+                           
+                        </ul>
+                    </div>
+                </div>
+                <!--//lnb-->
+                <!--contents area-->
+                <div class="flex-grow-1" style="margin-left:100px;">
+                    <!--contents tab area-->
+                    <div class="bg-light border-bottom p-2 position-fixed w-100">
+                        <ul class="nav nav-pills">
+                            <li class="nav-item"><a class="nav-link" href="admin_manage-study-model.html">모델 학습하기</a></li>
+                            <li class="nav-item"><a class="nav-link" href="admin_manage-study-category-setting.html">학습 카테고리 관리</a></li>
+                        </ul>
+                    </div>
+                    <!--//contents tab area-->
+                    <!--contents body area-->
+                    <div class="p-4" style="margin-top: 55px;">
+                        <!--contents body top-->
+                        <div class="d-flex align-items-end justify-content-between w-100">
+                            <div>
+                                <h4 class="fw-bold">학습 카테고리 관리</h4>
+                                <p class="slate-400 font-12">학습 데이터를 분류할 카테고리를 관리합니다.</p>
+                            </div>
+                            
+                        </div>
+                        <!--//contents body top-->
+                        <div class="d-flex align-items-start gap-3 mt-2">
+                            
+                            <div class="border border-radius-6 bg-white p-3" style="width: 320px;">
+                                <div class="d-flex align-items-center">
+                                    <h5 class="fw-bold mb-0">학습 카테고리</h5>
+                                    <div class="btn-group btn-group-sm ms-auto" role="group" aria-label="Small button group">
+                                        <button type="button" class="btn btn-outline-gray" data-bs-toggle="modal" data-bs-target="#addcategory"><span class="material-symbols-outlined">add</span></button>
+                                        <button type="button" class="btn btn-outline-gray" data-bs-toggle="modal" data-bs-target="#editcategory"><span class="material-symbols-outlined">edit</span></button>
+                                        <button type="button" class="btn btn-outline-gray" data-bs-toggle="popover" id="popover1"><span class="material-symbols-outlined">delete</span></button>
+                                    </div>
+                                    <!-- popover 내용 -->
+                                    <div id="popover-content-deletecategoryA" class="d-none">
+                                        <div class="text-center">
+                                            <span class="material-icons-outlined h2 text-danger">delete</span>
+                                            <p class="fw-bold font-14">선택한 카테고리를 삭제하시겠습니까?</p>
+                                            <p class="text-danger">소속된 하위 카테고리도 모두 삭제됩니다.</p>
+                                            <div class="d-flex mt-3">
+                                                <a role="button" class="btn btn-sm btn-outline-secondary ms-auto me-2" id="close-btn">취소</a>
+                                                <a role="button" class="btn btn-sm btn-outline-dark">확인</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div  class="my-3">
+                                    <input type="text" class="form-control search" placeholder="검색어를 입력하세요.">
+                                </div>
+
+                                <div class="overflow-auto" style="max-height: calc(100vh - 270px);">
+                                    <div class="loading-skeleton">
+                                        <ul>융합사업부</ul>
+                                        <li>기획팀</li>
+                                        <li>디자인팀</li>
+                                        <ul>경영관리부부</ul>
+                                        <li>인사팀</li>
+                                        <li>마케팅파트</li>
+                                        <li>홍보파트</li>
+                                    </div>       
+                                </div>
+                            </div>
+
+                            <div class="border border-radius-6 bg-white p-3 flex-grow-1">
+                                <div class="d-flex gap-4 align-items-center">
+                                    <h5 class="fw-bold mb-0">카테고리 관리</h5>
+                                    <ul class="nav nav-underline gap-0">
+                                        <li class="nav-item p-0" role="presentation">
+                                            <button class="nav-link active" id="datasearch-tab" data-bs-toggle="pill" data-bs-target="#datasearch" type="button" role="tab" aria-controls="datasearch" aria-selected="true">학습 데이터 조회</button>
+                                        </li>
+                                        <li class="nav-item p-0" role="presentation">
+                                            <button class="nav-link" id="categorysetting-tab" data-bs-toggle="pill" data-bs-target="#categorysetting" type="button" role="tab" aria-controls="categorysetting" aria-selected="false">카테고리 설정</button>
+                                        </li>
+                                        <li class="nav-item p-0" role="presentation">
+                                            <button class="nav-link" id="authoritystting-tab" data-bs-toggle="pill" data-bs-target="#authoritystting" type="button" role="tab" aria-controls="authoritystting" aria-selected="false">접근 권한 설정</button>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                
+                                <div class="tab-content pt-3" id="pills-tabContent">
+                                    <!--학습 데이터 조회-->
+                                    <div class="tab-pane fade show active" id="datasearch" role="tabpanel" aria-labelledby="datasearch-tab" tabindex="0">
+                                        <div class="overflow-auto" style="max-height: calc(100vh - 215px);">
+
+                                            <div class="d-flex align-items-center mt-2">
+                                                <input type="text" class="form-control width-200px search" placeholder="검색어를 입력하세요.">
+                                                <div class="ms-auto btn-group" role="group">
+                                                    <button type="button" class="btn btn-outline-gray" data-bs-toggle="modal" data-bs-target="#data-upload" >데이터 업로드</button>
+                                                    <button type="button" class="btn btn-outline-gray" data-bs-toggle="modal" data-bs-target="#SFTPsetting">SFTP 설정</button>
+                                                    <button type="button" class="btn btn-outline-gray" data-bs-toggle="popover" id="popover3">데이터 삭제 </button>
+                                                </div>
+
+                                                <!--popover 내용-->
+                                                <div id="popover-content-deletedata" class="d-none">
+                                                    <div class="text-center">
+                                                        <span class="material-icons-outlined h2 text-danger">delete</span>
+                                                        <p class="fw-bold font-14">선택한 데이터를 삭제하시겠습니까?</p>
+                                                        <p class="text-danger">학습 완료된 데이터는<br>다음 학습 진행 시 삭제됩니다.</p>
+                                                        <div class="d-flex mt-3">
+                                                            <a role="button" class="btn btn-sm btn-outline-secondary ms-auto me-2" id="close-btn">취소</a>
+                                                            <a role="button" class="btn btn-sm btn-outline-dark">확인</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            
+                                            <table class="table table-bordered table-hover text-center my-2">
+                                                <colgroup>
+                                                    <col width="40px">
+                                                    <col width="*">
+                                                    <col width="20%">
+                                                    <col width="8%">
+                                                    <col width="8%">
+                                                    <col width="8%">
+                                                    <col width="8%">
+                                                </colgroup>
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="row">
+                                                            <div class="form-check d-flex justify-content-center">
+                                                                <input class="form-check-input" type="checkbox" value=""">
+                                                            </div>
+                                                        </th>
+                                                        <th scope="row">데이터 명</th>
+                                                        <th scope="row">등록 일시</th>
+                                                        <th scope="row">학습 여부</th>
+                                                        <th scope="row">파일 크기</th>
+                                                        <th scope="row">버전 정보</th>
+                                                        <th scope="row">미리보기</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="form-check d-flex justify-content-center">
+                                                                <input class="form-check-input" type="checkbox" value="">
+                                                            </div>
+                                                        </td>
+                                                        <td class="text-ellipsis">학습할 데이터명이 출력되는데 학습할 데이터명이 데이터명이 출력되는데 학습할 데이터명이 데이터명이 출력되는데 .pdf</td>
+                                                        <td>2024-10-24 00:00:00</td>
+                                                        <td><span class="fw-bold text-danger">N</span></td>
+                                                        <td>10MB</td>
+                                                        <td><a href="#" data-bs-toggle="modal" data-bs-target="#data-ver">V1.00</a></td>
+                                                        <td><button class="btn btn-icon-only btn-nobg-light btn-sm" data-bs-toggle="modal" data-bs-target="#data-preview" title="미리보기"><span class="material-symbols-outlined">search</span></button></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="form-check d-flex justify-content-center">
+                                                                <input class="form-check-input" type="checkbox" value="">
+                                                            </div>
+                                                        </td>
+                                                        <td class="text-ellipsis">학습할 데이터명이 출력되는데.pdf</td>
+                                                        <td>2024-10-24 00:00:00</td>
+                                                        <td><span class="fw-bold text-success">Y</span></td>
+                                                        <td>10MB</td>
+                                                        <td><a href="#" data-bs-toggle="modal" data-bs-target="#data-ver">V1.00</a></td>
+                                                        <td><button class="btn btn-icon-only btn-nobg-light btn-sm" data-bs-toggle="modal" data-bs-target="#data-preview" title="미리보기"><span class="material-symbols-outlined">search</span></button></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="form-check d-flex justify-content-center">
+                                                                <input class="form-check-input" type="checkbox" value="">
+                                                            </div>
+                                                        </td>
+                                                        <td class="text-ellipsis">학습할 데이터명이 출력되는데.pdf</td>
+                                                        <td>2024-10-24 00:00:00</td>
+                                                        <td><span class="fw-bold text-success">Y</span></td>
+                                                        <td>10MB</td>
+                                                        <td><a href="#" data-bs-toggle="modal" data-bs-target="#data-ver">V1.00</a></td>
+                                                        <td><button class="btn btn-icon-only btn-nobg-light btn-sm" data-bs-toggle="modal" data-bs-target="#data-preview" title="미리보기"><span class="material-symbols-outlined">search</span></button></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="form-check d-flex justify-content-center">
+                                                                <input class="form-check-input" type="checkbox" value="">
+                                                            </div>
+                                                        </td>
+                                                        <td class="text-ellipsis">학습할 데이터명이 출력되는데.pdf</td>
+                                                        <td>2024-10-24 00:00:00</td>
+                                                        <td><span class="fw-bold text-success">Y</span></td>
+                                                        <td>10MB</td>
+                                                        <td><a href="#" data-bs-toggle="modal" data-bs-target="#data-ver">V1.00</a></td>
+                                                        <td><button class="btn btn-icon-only btn-nobg-light btn-sm" data-bs-toggle="modal" data-bs-target="#data-preview" title="미리보기"><span class="material-symbols-outlined">search</span></button></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <nav aria-label="Page navigation">
+                                                <ul class="pagination mb-0">
+                                                  <li class="page-item"><a class="page-link" href="#"><span class="material-symbols-outlined">arrow_back_ios</span></a></li>
+                                                  <li class="page-item"><a class="page-link" href="#">이전</a></li>
+                                                  <li class="page-item"><a class="page-link active" href="#">1</a></li>
+                                                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                                  <li class="page-item"><a class="page-link" href="#">다음</a></li>
+                                                  <li class="page-item"><a class="page-link" href="#"><span class="material-symbols-outlined">arrow_forward_ios</span></a></li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                    </div>
+
+                                    <!--카테고리 설정-->
+                                    <div class="tab-pane fade" id="categorysetting" role="tabpanel" aria-labelledby="categorysetting-tab" tabindex="0">
+                                        <div class="overflow-auto" style="max-height: calc(100vh - 215px);">
+                                            <form class="width-500px my-3">
+                                                <div class="mb-2">
+                                                    <label class="form-label">카테고리 명<span class="text-danger mx-1">*</span></label>
+                                                    <input type="text" class="form-control" placeholder="최대 100자 입력 가능합니다.">
+                                                </div>
+                                                <div class="mb-2">
+                                                    <label class="form-label">카테고리 No</label>
+                                                    <input type="text" class="form-control" value="4.1" disabled>
+                                                </div>
+                                                <div class="mb-2">
+                                                    <label class="form-label">상위 카테고리<span class="text-danger mx-1">*</span></label>
+                                                    <select class="form-select" aria-label="상위 카테고리 선택">
+                                                        <option selected>없음</option>
+                                                    </select>
+                                                </div>
+                                            </form>
+                                            <div class="d-flex width-500px gap-2">
+                                                <button type="button" class="btn btn-danger ms-auto" data-bs-toggle="popover" id="popover2">삭제</button>
+                                                <button type="button" class="btn btn-dark">저장</button>
+                                            </div>
+                                            
+                                            <!-- popover 내용 -->
+                                            <div id="popover-content-deletecategoryB" class="d-none">
+                                                <div class="text-center">
+                                                    <span class="material-icons-outlined h2 text-danger">delete</span>
+                                                    <p class="fw-bold font-14">선택한 카테고리를 삭제하시겠습니까?</p>
+                                                    <p class="text-danger">소속된 하위 카테고리도 모두 삭제됩니다.</p>
+                                                    <div class="d-flex mt-3">
+                                                        <a role="button" class="btn btn-sm btn-outline-secondary ms-auto me-2" id="close-btn">취소</a>
+                                                        <a role="button" class="btn btn-sm btn-outline-dark">확인</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+
+                                        </div>
+                                    </div>
+
+                                    <!--접근 권한 설정-->
+                                    <div class="tab-pane fade" id="authoritystting" role="tabpanel" aria-labelledby="authoritystting-tab" tabindex="0">
+                                        <div class="overflow-auto" style="max-height: calc(100vh - 215px);">
+                                            <form class="width-500px my-3">
+                                                <div class="mb-2">
+                                                    <label class="form-label">접근 가능 팀 설정</label>
+                                                    <input type="text" class="form-control" placeholder="설정된 팀이 없습니다." data-bs-toggle="modal" data-bs-target="#teamsetting" role="button" readonly value="인사팀, 연구개발팀" >
+                                                </div>
+                                                <div class="mb-2">
+                                                    <label class="form-label">접근 가능 직책 설정</label>
+                                                    <input type="text" class="form-control" placeholder="설정된 직책이 없습니다." data-bs-toggle="modal" data-bs-target="#positionsetting" role="button" readonly value="대표이사" >
+                                                </div>
+                                                <div class="mb-2">
+                                                    <label class="form-label">접근 가능 직위 설정</label>
+                                                    <input type="text" class="form-control" placeholder="설정된 직위가 없습니다." data-bs-toggle="modal" data-bs-target="#ranksetting" role="button" readonly>
+                                                </div>
+                                                <div class="mb-2">
+                                                    <label class="form-label">접근 가능 개인 설정</label>
+                                                    <textarea class="form-control" rows="3" placeholder="설정된 사용자가 없습니다." data-bs-toggle="modal" data-bs-target="#membersetting" role="button" readonly >최정현 (junghyun.choi@jiran.com), 김종배(jongbae@jiran.com)</textarea>
+                                                    
+                                                </div>
+                                            </form>
+                                            <div class="d-flex width-500px gap-2">
+                                                <button type="button" class="btn btn-dark ms-auto">저장</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                   
+                                </div>
+
+                                
+                            </div>
+                        </div>
+                        
+                          
+                    </div>
+                    <!--//contents body area-->
+                </div>
+                <!--//contents area-->
+            </div>
+    </div>
+
+<!--알럿 예시-->
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <div class="d-flex align-items-center me-3">
+            <span class="material-symbols-outlined me-2 h5 mb-0">check_circle</span>
+            <span>성공 메세지 이렇게 나오지요.</span>
+        </div>
+        <button type="button" class="btn-close ms-3" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <div class="d-flex align-items-center me-3">
+            <span class="material-symbols-outlined me-2 h5 mb-0">error</span>
+            <span>에러 메세지 이렇게 나오지요.</span>
+        </div>
+        <button type="button" class="btn-close ms-3" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <div class="d-flex align-items-center me-3">
+            <span class="material-symbols-outlined  me-2 h5 mb-0">dangerous</span>
+            <span>경고 메세지 이렇게 나오지요.</span>
+        </div>
+        <button type="button" class="btn-close ms-3" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+        <div class="d-flex align-items-center me-3">
+            <span class="material-symbols-outlined  me-2 h5 mb-0">help</span>
+            <span>안내 메세지 이렇게 나오지요.</span>
+        </div>
+        <button type="button" class="btn-close ms-3" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<!--알럿 예시 끝-->
+
+
+
+<!--카테고리 추가 모달-->
+<div class="modal" id="addcategory" tabindex="-1" aria-labelledby="addcategoryLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title fw-bold">카테고리 추가</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+                <div class="mb-2">
+                    <label class="form-label">카테고리 명<span class="text-danger mx-1">*</span></label>
+                    <input type="text" class="form-control" placeholder="카테고리 명을 입력하세요.">
+                </div>
+                <div class="mb-2">
+                    <label class="form-label">카테고리 넘버</label>
+                    <input type="text" class="form-control" disabled value="1-1">
+                </div>
+                <div class="mb-2">
+                    <label class="form-label">상위 카테고리</label>
+                    <select class="form-select" aria-label="select">       
+                        <option value="1">없음</option>
+                    </select>
+                </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+            <button type="button" class="btn btn-dark">저장 후 계속 추가</button>
+            <button type="button" class="btn btn-dark">저장</button>
+          </div>
+        </div>
+    </div>
+</div>
+<!--//카테고리 추가 모달-->
+
+<!--카테고리 수정 모달-->
+<div class="modal" id="editcategory" tabindex="-1" aria-labelledby="editcategoryLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title fw-bold">카테고리 수정</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body"> 
+            <form>
+                <div class="mb-2">
+                    <label class="form-label">카테고리 명<span class="text-danger mx-1">*</span></label>
+                    <input type="text" class="form-control" placeholder="카테고리 명을 입력하세요.">
+                </div>
+                <div class="mb-2">
+                    <label class="form-label">카테고리 넘버</label>
+                    <input type="text" class="form-control" disabled value="1-1">
+                </div>
+                <div class="mb-2">
+                    <label class="form-label">상위 카테고리</label>
+                    <select class="form-select" aria-label="select">       
+                        <option value="1">없음</option>
+                    </select>
+                </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+            <button type="button" class="btn btn-dark">저장</button>
+          </div>
+        </div>
+    </div>
+</div>
+<!--//카테고리 수정 모달-->
+
+<!--접근 가능 팀 설정 모달-->
+<div class="modal" id="teamsetting" tabindex="-1" aria-labelledby="teamsettingLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title fw-bold">접근 가능 팀 설정</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="d-flex flex-wrap align-items-baseline p-3 bg-light border-bottom">
+            <span class="me-2 font-12 slate-500">카테고리 명:</span><h6 class="fw-bold mb-0">접근권한 학습 카테고리 </h6>
+          </div>
+
+          <div class="modal-body">
+            <div>
+                <div class="mb-2">
+                    <input type="text" class="form-control search width-200px" placeholder="검색어를 입력하세요.">
+                </div>
+                <table class="table table-bordered text-center my-2">
+                    <colgroup>
+                        <col width="40px">
+                        <col width="20%">
+                        <col width="*">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th scope="row">
+                                <div class="form-check d-flex justify-content-center">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                </div>
+                            </th>
+                            <th scope="row">팀코드</th>
+                            <th scope="row">팀</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="form-check d-flex justify-content-center">
+                                    <input class="form-check-input row-checkbox" type="checkbox" value="">
+                                </div>
+                            </td>
+                            <td>T001</td>
+                            <td>관리자팀</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-check d-flex justify-content-center">
+                                    <input class="form-check-input row-checkbox" type="checkbox" value="">
+                                </div>
+                            </td>
+                            <td>T002</td>
+                            <td>인사팀</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-check d-flex justify-content-center">
+                                    <input class="form-check-input row-checkbox" type="checkbox" value="">
+                                </div>
+                            </td>
+                            <td>T003</td>
+                            <td>연구개발팀</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-check d-flex justify-content-center">
+                                    <input class="form-check-input row-checkbox" type="checkbox" value="">
+                                </div>
+                            </td>
+                            <td>T004</td>
+                            <td data-tooltip="천문연구원>1연구소>사용자관리팀">사용자관리팀</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-check d-flex justify-content-center">
+                                    <input class="form-check-input row-checkbox" type="checkbox" value="">
+                                </div>
+                            </td>
+                            <td>T005</td>
+                            <td data-tooltip="천문연구원>2연구소>사용자관리팀">사용자관리팀</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+            <button type="button" class="btn btn-dark">저장</button>
+          </div>
+        </div>
+    </div>
+</div>
+<!--//접근 가능 팀 설정 모달-->
+
+<!--접근 가능 개인 설정 모달-->
+<div class="modal" id="membersetting" tabindex="-1" aria-labelledby="membersettingLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title fw-bold">접근 가능 개인 설정</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="d-flex flex-wrap align-items-baseline p-3 bg-light border-bottom">
+            <span class="me-2 font-12 slate-500">카테고리 명:</span><h6 class="fw-bold mb-0">카테고리명이 여기 출력 너무 길면 아래로 떨어져야겠나 </h6>
+          </div>
+
+          <div class="modal-body">
+            <div>
+                <div class="mb-2">
+                    <input type="text" class="form-control search width-200px" placeholder="검색어를 입력하세요.">
+                </div>
+                <table class="table table-bordered text-center my-2">
+                    <colgroup>
+                        <col width="40px">
+                        <col width="*">
+                        <col width="*">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th scope="row">
+                                <div class="form-check d-flex justify-content-center">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                </div>
+                            </th>
+                            <th scope="row">사용자 명</th>
+                            <th scope="row">ID (이메일)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="form-check d-flex justify-content-center">
+                                    <input class="form-check-input row-checkbox" type="checkbox" value="">
+                                </div>
+                            </td>
+                            <td>유병완</td>
+                            <td>dbquddhks@jiran.com</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-check d-flex justify-content-center">
+                                    <input class="form-check-input row-checkbox" type="checkbox" value="">
+                                </div>
+                            </td>
+                            <td>차형건</td>
+                            <td>ckgudrjs@jiran.com</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-check d-flex justify-content-center">
+                                    <input class="form-check-input row-checkbox" type="checkbox" value="">
+                                </div>
+                            </td>
+                            <td>양진모</td>
+                            <td>didwlsah@jiran.com</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-check d-flex justify-content-center">
+                                    <input class="form-check-input row-checkbox" type="checkbox" value="">
+                                </div>
+                            </td>
+                            <td>양진모</td>
+                            <td>didwlsah@jiran.com</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-check d-flex justify-content-center">
+                                    <input class="form-check-input row-checkbox" type="checkbox" value="">
+                                </div>
+                            </td>
+                            <td>양진모</td>
+                            <td>didwlsah@jiran.com</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-check d-flex justify-content-center">
+                                    <input class="form-check-input row-checkbox" type="checkbox" value="">
+                                </div>
+                            </td>
+                            <td>양진모</td>
+                            <td>didwlsah@jiran.com</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-check d-flex justify-content-center">
+                                    <input class="form-check-input row-checkbox" type="checkbox" value="">
+                                </div>
+                            </td>
+                            <td>양진모</td>
+                            <td>didwlsah@jiran.com</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-check d-flex justify-content-center">
+                                    <input class="form-check-input row-checkbox" type="checkbox" value="">
+                                </div>
+                            </td>
+                            <td>양진모</td>
+                            <td>didwlsah@jiran.com</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-check d-flex justify-content-center">
+                                    <input class="form-check-input row-checkbox" type="checkbox" value="">
+                                </div>
+                            </td>
+                            <td>양진모</td>
+                            <td>didwlsah@jiran.com</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-check d-flex justify-content-center">
+                                    <input class="form-check-input row-checkbox" type="checkbox" value="">
+                                </div>
+                            </td>
+                            <td>양진모</td>
+                            <td>didwlsah@jiran.com</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <nav aria-label="Page navigation">
+                    <ul class="pagination pagination-sm mb-0">
+                      <li class="page-item"><a class="page-link" href="#"><span class="material-symbols-outlined">arrow_back_ios</span></a></li>
+                      <li class="page-item"><a class="page-link" href="#">이전</a></li>
+                      <li class="page-item"><a class="page-link active" href="#">1</a></li>
+                      <li class="page-item"><a class="page-link" href="#">2</a></li>
+                      <li class="page-item"><a class="page-link" href="#">3</a></li>
+                      <li class="page-item"><a class="page-link" href="#">다음</a></li>
+                      <li class="page-item"><a class="page-link" href="#"><span class="material-symbols-outlined">arrow_forward_ios</span></a></li>
+                    </ul>
+                </nav>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+            <button type="button" class="btn btn-dark">저장</button>
+          </div>
+        </div>
+    </div>
+</div>
+<!--//접근 가능 개인 설정 모달-->
+
+<!--접근 가능 직위 설정 모달-->
+<div class="modal" id="ranksetting" tabindex="-1" aria-labelledby="ranksettingLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title fw-bold">접근 가능 직위 설정</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="d-flex flex-wrap align-items-baseline p-3 bg-light border-bottom">
+            <span class="me-2 font-12 slate-500">카테고리 명:</span><h6 class="fw-bold mb-0">카테고리명이 여기 출력 너무 길면 아래로 떨어져야겠나 </h6>
+          </div>
+
+          <div class="modal-body">
+            <div>
+                <div class="mb-2">
+                    <input type="text" class="form-control search width-200px" placeholder="검색어를 입력하세요.">
+                </div>
+                <table class="table table-bordered text-center my-2">
+                    <colgroup>
+                        <col width="40px">
+                        <col width="*">
+                        <col width="*">
+                        <col width="20%">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th scope="row">
+                                <div class="form-check d-flex justify-content-center">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                </div>
+                            </th>
+                            <th scope="row">직위 코드</th>
+                            <th scope="row">직위 명</th>
+                            <th scope="row">레벨</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="form-check d-flex justify-content-center">
+                                    <input class="form-check-input row-checkbox" type="checkbox" value="">
+                                </div>
+                            </td>
+                            <td>H001</td>
+                            <td>대표</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-check d-flex justify-content-center">
+                                    <input class="form-check-input row-checkbox" type="checkbox" value="">
+                                </div>
+                            </td>
+                            <td>H002</td>
+                            <td>이사</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-check d-flex justify-content-center">
+                                    <input class="form-check-input row-checkbox" type="checkbox" value="">
+                                </div>
+                            </td>
+                            <td>H003</td>
+                            <td>부장</td>
+                            <td>3</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+            <button type="button" class="btn btn-dark">저장</button>
+          </div>
+        </div>
+    </div>
+</div>
+<!--//접근 가능 직위 설정 모달-->
+
+
+<!--접근 가능 직책 설정 모달-->
+<div class="modal" id="positionsetting" tabindex="-1" aria-labelledby="positionsettingLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title fw-bold">접근 가능 직책 설정</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="d-flex flex-wrap align-items-baseline p-3 bg-light border-bottom">
+            <span class="me-2 font-12 slate-500">카테고리 명:</span><h6 class="fw-bold mb-0">카테고리명이 여기 출력 너무 길면 아래로 떨어져야겠나 </h6>
+          </div>
+
+          <div class="modal-body">
+            <div>
+                <div class="mb-2">
+                    <input type="text" class="form-control search width-200px" placeholder="검색어를 입력하세요.">
+                </div>
+                <table class="table table-bordered text-center my-2">
+                    <colgroup>
+                        <col width="40px">
+                        <col width="*">
+                        <col width="*">
+                        <col width="20%">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th scope="row">
+                                <div class="form-check d-flex justify-content-center">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                </div>
+                            </th>
+                            <th scope="row">직책 코드</th>
+                            <th scope="row">직책 명</th>
+                            <th scope="row">레벨</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="form-check d-flex justify-content-center">
+                                    <input class="form-check-input row-checkbox" type="checkbox" value="">
+                                </div>
+                            </td>
+                            <td>D001</td>
+                            <td>대표 이사</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-check d-flex justify-content-center">
+                                    <input class="form-check-input row-checkbox" type="checkbox" value="">
+                                </div>
+                            </td>
+                            <td>D002</td>
+                            <td>팀장</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-check d-flex justify-content-center">
+                                    <input class="form-check-input row-checkbox" type="checkbox" value="">
+                                </div>
+                            </td>
+                            <td>D003</td>
+                            <td>팀원</td>
+                            <td>3</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+            <button type="button" class="btn btn-dark">저장</button>
+          </div>
+        </div>
+    </div>
+</div>
+<!--//접근 가능 직책 설정 모달-->
+
+<!--SFTP 설정 모달-->
+<div class="modal" id="SFTPsetting" tabindex="-1" aria-labelledby="SFTPsettingLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title fw-bold">SFTP 설정</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="d-flex flex-wrap align-items-baseline p-3 bg-light border-bottom">
+            <span class="me-2 font-12 slate-500">카테고리 명:</span><h6 class="fw-bold mb-0">카테고리명이 여기 출력 너무 길면 아래로 떨어져야겠나 </h6>
+          </div>
+
+          <div class="modal-body">
+            <div>
+                <form>
+                    <div class="form-check form-switch mb-2">
+                        <input class="form-check-input" type="checkbox" role="switch" id="schedule">
+                        <label class="form-check-label" for="schedule">스케줄링 설정</label>
+                    </div>
+
+                    <div class="mb-2">
+                      <label class="form-label">예약 시간 설정<span class="text-danger mx-1">*</span></label>
+                      <div class="d-flex align-items-center gap-2 schedule-cycle">
+                        <select id="cycle" class="form-select" aria-label="select">
+                            <option value="once"selected>한번만</option>
+                            <option value="day">매일</option>
+                            <option value="weeks">매주</option>
+                            <option value="month">매월</option>
+                        </select>
+
+                        <!--주기 변경에 따른 값-->
+                        <div id="content1" class="option">
+                        <input type="date" class="form-control w-300px">
+                        </div>
+                        <div id="content2" class="option">
+                        <input type="date" class="form-control d-none">
+                        </div>
+                        <div id="content3" class="option">
+                        <select class="form-select width-100px" aria-label="select">       
+                            <option value="월" selected>월</option>
+                            <option value="화">화</option>
+                            <option value="수">수</option>
+                            <option value="목">목</option>
+                            <option value="금">금</option>
+                            <option value="토">토</option>
+                            <option value="일">일</option>
+                        </select>
+                        </div>
+                        <div id="content4" class="option">
+                        <div class="d-flex align-items-center">
+                            <select class="form-select width-100px" aria-label="select">       
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                                <option value="21">21</option>
+                                <option value="22">22</option>
+                                <option value="23">23</option>
+                                <option value="24">24</option>
+                                <option value="25">25</option>
+                                <option value="26">26</option>
+                                <option value="27">27</option>
+                                <option value="28">28</option>
+                                <option value="29">29</option>
+                                <option value="30">30</option>
+                                <option value="31">31</option>
+                            </select>
+                            <span class="ms-1 me-3">일</span>
+                        </div>
+                        
+                        </div>
+                    
+                        <!--//주기 변경에 따른 값-->
+                        <select class="form-select width-100px" aria-label="select">       
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                            <option value="24">24</option>
+                        </select>
+                        <span>시</span>
+                      </div>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">SFTP IP<span class="text-danger mx-1">*</span></label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">SFTP PORT<span class="text-danger mx-1">*</span></label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">SFTP PASSWORD<span class="text-danger mx-1">*</span></label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">대상 디렉토리<span class="text-danger mx-1">*</span></label>
+                        <div class="d-flex gap-2">
+                            <input type="text" class="form-control flex-grow-1" placeholder="마지막에 /를 입력해 주세요.">
+                            <button class="btn btn-outline-gray flex-shrink">연결하기</button>
+                        </div>
+                    </div>
+                    
+                </form>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+            <button type="button" class="btn btn-dark">저장</button>
+          </div>
+        </div>
+    </div>
+</div>
+<!--//SFTP 설정 모달-->
+
+<!--데이터 업로드 모달-->
+<div class="modal" id="data-upload" tabindex="-1" aria-labelledby="data-uploadLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title fw-bold">데이터 업로드</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="d-flex flex-wrap align-items-baseline p-3 bg-light border-bottom">
+            <span class="me-2 font-12 slate-500">카테고리 명:</span><h6 class="fw-bold mb-0">카테고리명이 여기 출력 너무 길면 아래로 떨어져야겠나 </h6>
+          </div>
+
+          <div class="modal-body pb-0">
+                <p class="fw-bold mb-2">학습 데이터 업로드<span class="text-danger">*</span></p>
+                <div id="theWidget" class="dnd-file-upload-widget mb-4">
+                    <div class="form-group drop_zone">
+                        <span>해당 영영에 파일을 Drag & Drop 또는</span>
+                        <label class="btn">
+                            여기를 클릭하여 파일을 업로드하세요.
+                            <input type="file" multiple="" />
+                        </label>
+                    </div>
+                    <!--드래그앤드롭 업로드 된 리스트 창-->
+                    <div class="files-container"></div>
+                </div>
+                <p class="fw-bold mb-2">학습 유형<span class="text-danger">*</span></p>
+                <div class="">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                        <label class="form-check-label" for="inlineRadio1">신규 학습</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                        <label class="form-check-label" for="inlineRadio2">추가 학습</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" checked>
+                        <label class="form-check-label" for="inlineRadio3">자동</label>
+                    </div>
+                </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+            <button type="button" class="btn btn-dark">저장</button>
+          </div>
+        </div>
+    </div>
+</div>
+<!--//데이터 업로드 모달 끝-->
+
+<!--데이터 버전 정보 조회 모달-->
+<div class="modal" id="data-ver" tabindex="-1" aria-labelledby="data-verLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title fw-bold">데이터 버전 정보 조회</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          
+          <div class="d-flex flex-wrap align-items-baseline p-3 bg-light border-bottom">
+            <span class="me-2 font-12 slate-500">데이터 명:</span><h6 class="fw-bold mb-0">데이터명이 여기 출력 너무 길면 아래로 떨어져야겠나 </h6>
+          </div>
+
+          <div class="modal-body pb-0">
+            <table class="table table-bordered table-hover text-center my-1">
+                <thead>
+                    <tr>
+                        <th scope="row">데이터 버전 정보</th>
+                        <th scope="row">학습 완료 일자</th>
+                        <th scope="row">파일 크기</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>V1.02</td>
+                        <td><div class="d-flex align-items-center fw-bold indigo-blue justify-content-center"><span class="material-symbols-outlined me-1 icon-ing">cached</span><span>학습 진행 중</sapn></div></td>
+                        <td>10MB</td>
+                    </tr>
+                    <tr>
+                        <td>V1.02</td>
+                        <td>2024-09-01 00:00:00</td>
+                        <td>10MB</td>
+                    </tr>
+                    <tr>
+                        <td>V1.02</td>
+                        <td>2024-09-01 00:00:00</td>
+                        <td>10MB</td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+            <nav aria-label="Page navigation">
+                <ul class="pagination pagination-sm mb-0">
+                  <li class="page-item"><a class="page-link" href="#"><span class="material-symbols-outlined">arrow_back_ios</span></a></li>
+                  <li class="page-item"><a class="page-link" href="#">이전</a></li>
+                  <li class="page-item"><a class="page-link active" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">다음</a></li>
+                  <li class="page-item"><a class="page-link" href="#"><span class="material-symbols-outlined">arrow_forward_ios</span></a></li>
+                </ul>
+            </nav>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">확인</button>
+          </div>
+        </div>
+    </div>
+</div>
+<!--//데이터 버전 정보 조회 모달-->
+
+<!--데이터 미리보기 모달-->
+<div class="modal" id="data-preview" tabindex="-1" aria-labelledby="data-previewLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title fw-bold">데이터 미리보기</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="d-flex flex-wrap align-items-baseline p-3 bg-light border-bottom">
+            <span class="me-2 font-12 slate-500">데이터 명:</span><h6 class="fw-bold mb-0">데이터명이 여기 출력 너무 길면 아래로 떨어져야겠나 </h6>
+          </div>
+
+          <div class="modal-body">
+            
+            <div id="carouselExampleIndicators" class="carousel slide">
+                <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1">1</button>
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2">2</button>
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3">3</button>
+                </div>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <div class="d-flex justify-content-center align-items-center h-100">
+                        <img src="assets/images/test-h.png" class="d-block" alt="preview">
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <div class="d-flex justify-content-center align-items-center h-100">
+                        <img src="assets/images/test-v.jpg" class="d-block" alt="preview">
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <div class="d-flex justify-content-center align-items-center h-100">
+                        <img src="assets/images/test-v.jpg" class="d-block" alt="preview">
+                    </div>
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+            
+          </div>
+          <!-- <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">확인</button>
+          </div> -->
+        </div>
+    </div>
+</div>
+<!--//데이터 미리보기 모달-->
+
+<!--테이블 안에 툴팁 (천문연)-->
+<div id="tooltip" class="tooltip"></div>
+<script>
+  const tooltip = document.getElementById('tooltip');
+  const tds = document.querySelectorAll('td[data-tooltip]');
+
+  tds.forEach(td => {
+    td.addEventListener('mouseenter', () => {
+      tooltip.textContent = td.getAttribute('data-tooltip');
+      tooltip.classList.add('show');
+    });
+
+    td.addEventListener('mousemove', (e) => {
+      const offset = 12;
+      tooltip.style.left = e.clientX + offset + 'px';
+      tooltip.style.top = e.clientY + offset + 'px';
+    });
+
+    td.addEventListener('mouseleave', () => {
+      tooltip.classList.remove('show');
+    });
+  });
+</script>
+
+
+<!--주기 셀렉시-->
+<script>
+    const cycle = document.getElementById("cycle");
+
+    cycle.addEventListener("change", function() {
+        // 모든 input 요소를 숨김
+        document.querySelectorAll(".option").forEach(function(input) {
+            input.style.display = "none";
+        });
+
+        // 선택된 값에 따라 특정 input 요소를 표시
+        const selectedValue = cycle.value;
+        if (selectedValue === "once") {
+            document.getElementById("content1").style.display = "block";
+        } else if (selectedValue === "day") {
+            document.getElementById("content2").style.display = "block";
+        } else if (selectedValue === "weeks") {
+            document.getElementById("content3").style.display = "block";
+        } else if (selectedValue === "month") {
+            document.getElementById("content4").style.display = "block";
+        }
+    });
+
+    // 페이지 로드 시 기본값 설정 (한번만 옵션에 해당하는 content1을 표시)
+    window.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("content1").style.display = "block";
+    });
+</script>
+
+<!--테이블 체크박스 선택시 행 체크-->
+<script>
+    const checkboxes = document.querySelectorAll('.row-checkbox');
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function () {
+            const row = this.closest('tr');
+            if (this.checked) {
+                row.classList.add('selected');
+            } else {
+                row.classList.remove('selected');
+            }
+        });
+    });
+</script>
+
+<!--팝오버-->
+<script>
+    const popoverTrigger1 = document.getElementById('popover1');
+    const popover1 = new bootstrap.Popover(popoverTrigger1, {
+        html: true, 
+        content: function() {
+            return $("#popover-content-deletecategoryA").html();
+        },
+    });
+
+    const popoverTrigger2 = document.getElementById('popover2');
+    const popover2 = new bootstrap.Popover(popoverTrigger2, {
+        html: true, 
+        content: function() {
+            return $("#popover-content-deletecategoryB").html();
+        },
+    });
+
+    const popoverTrigger3 = document.getElementById('popover3');
+    const popover3 = new bootstrap.Popover(popoverTrigger3, {
+        html: true, 
+        content: function() {
+            return $("#popover-content-deletedata").html();
+        },
+    });
+
+    // 닫기 버튼 클릭 시 팝오버 닫기
+    $(document).on('click', '#close-btn', function () {
+        popover1.hide();
+        popover2.hide();
+        popover3.hide();
+    });
+
+    // 팝오버 외부 클릭 시 팝오버 닫기
+    document.addEventListener('click', function (event) {
+        if (!popoverTrigger1.contains(event.target) && 
+            !popoverTrigger2.contains(event.target) && 
+            !popoverTrigger3.contains(event.target) && 
+            !document.querySelector('.popover')?.contains(event.target)) { // 팝오버 영역 제외
+            if (popover1._isShown) popover1.hide();
+            if (popover2._isShown) popover2.hide();
+            if (popover3._isShown) popover3.hide();
+        }
+    });
+
+    // 팝오버 버튼 클릭 시 이벤트 전파 중단 (외부 클릭 이벤트 방지)
+    popoverTrigger1.addEventListener('click', (event) => event.stopPropagation());
+    popoverTrigger2.addEventListener('click', (event) => event.stopPropagation());
+    popoverTrigger3.addEventListener('click', (event) => event.stopPropagation());
+
+    // 팝오버 내부를 클릭해도 닫히지 않도록 설정
+    document.addEventListener('click', function(event) {
+        if (event.target.closest('.popover')) {
+            event.stopPropagation();
+        }
+    });
+</script>
+
+<!--드롭다운 파일 업로드--> <!--참고:https://codepen.io/team/CME-Web-dev/pen/gxEQzP-->
+<script>
+    var DndFileUploadWidget = (function defineDndFileUploadWidget() {
+
+        /* public static fields */
+        DndFileUploadWidget.DEFAULT_MAX_ALLOWED_TOTAL_BYTES = 10 * 1024 * 1024;
+
+        function DndFileUploadWidget(widgetDom, uploadUrl, completeUrl, options) {
+        this._widgetDom = widgetDom;
+        this._uploadUrl = uploadUrl;
+        this._completeUrl = completeUrl;
+        this._csrfHeaderName = options && options.csrfHeaderName;
+        this._csrfToken = options && options.csrfToken;
+        this._maxAllowedTotalBytes = (options && options.maxAllowedTotalBytes) || DndFileUploadWidget.DEFAULT_MAX_ALLOWED_TOTAL_BYTES;
+
+        var dropZone = this._dropZone = widgetDom.querySelector('.drop_zone');
+
+        dropZone.addEventListener('drop', bind(this.drop_handler, this));
+        dropZone.addEventListener('dragover', bind(this.dragover_handler, this));
+        dropZone.addEventListener('dragleave', bind(this.dragleave_handler, this));
+        dropZone.addEventListener('dragend', bind(this.dragend_handler, this));
+
+        var labelInDropZone = dropZone.querySelector('label');
+        labelInDropZone.addEventListener('drop', bind(this.drop_handler, this));
+        labelInDropZone.addEventListener('dragover', bind(this.dragover_handler, this));
+        labelInDropZone.addEventListener('dragleave', bind(this.dragleave_handler, this));
+        labelInDropZone.addEventListener('dragend', bind(this.dragend_handler, this));
+
+        var fileInputInDropZone = dropZone.querySelector('input[type="file"]');
+        fileInputInDropZone.addEventListener('change', bind(this.fileSelected_handler, this));
+
+        this.getUploadButton().addEventListener('click', bind(this.validateAndUpload, this));
+        }
+
+        /**
+         * Public methods
+         */
+        DndFileUploadWidget.prototype.drop_handler = function(ev) {
+        console.log("drop");
+        this._dropZone.classList.remove('dragover');
+        ev.preventDefault();
+        // If dropped items aren't files, reject them
+        var dt = ev.dataTransfer;
+        if (dt.items) {
+            // Use DataTransferItemList interface to access the file(s)
+            for (var i = 0; i < dt.items.length; i++) {
+            if (dt.items[i].kind === "file") {
+                var f = dt.items[i].getAsFile();
+                this.addFileUploadRow(f);
+            }
+            }
+        } else {
+            // Use DataTransfer interface to access the file(s)
+            for (var i = 0; i < dt.files.length; i++) {
+            var f = dt.files[i];
+            this.addFileUploadRow(f);
+            }
+        }
+        this.validate();
+        };
+
+        // Turn off the browser's default drag and drop handler.
+        DndFileUploadWidget.prototype.dragover_handler = function(ev) {
+        console.log("dragover");
+        // Prevent default select and drag behavior
+        ev.preventDefault();
+        this._dropZone.classList.add('dragover');
+        };
+
+        DndFileUploadWidget.prototype.dragleave_handler = function(ev) {
+        console.log("dragleave");
+        this._dropZone.classList.remove('dragover');
+        };
+
+        // Fired when the drag operation ends (signaling the drop has occurred or the drag has been canceled).
+        DndFileUploadWidget.prototype.dragend_handler = function(ev) {
+        console.log("dragend");
+        this._dropZone.classList.remove('dragover');
+        // Remove all of the drag data
+        var dt = ev.dataTransfer;
+        if (dt.items) {
+            // Use DataTransferItemList interface to remove the drag data
+            for (var i = 0; i < dt.items.length; i++) {
+            dt.items.remove(i);
+            }
+        } else {
+            // Use DataTransfer interface to remove the drag data
+            ev.dataTransfer.clearData();
+        }
+        };
+
+        DndFileUploadWidget.prototype.addFileUploadRow = function(file) {
+        var filesContainer = this.getFilesContainer();
+        var filename = file.name;
+        var fileSize = file.size;
+        var domString = '<div class="row form-group py-2"> <div class="col-8"> <div class="text-left" style="line-height:20px">' + filename + '</div> </div> <div class="col-3"> <div style="line-height:20px">' + humanReadableFileSize(fileSize) + '</div> </div> <div class="col-1 text-right"> <button class="btn btn-sm btn-nobg-light btn-icon-only ml-auto dnd-file-upload-widget-remove-file-button">  </button> </div> </div>'
+        var parser = new DOMParser();
+        var html = parser.parseFromString(domString, 'text/html');
+        var fileUploadRow = html.body.firstChild;
+        fileUploadRow.querySelector('button.dnd-file-upload-widget-remove-file-button')
+            .addEventListener('click', bind(this.removeFileUploadRow, this));
+        filesContainer.appendChild(fileUploadRow);
+        fileUploadRow.file = file;
+        };
+
+        DndFileUploadWidget.prototype.removeFileUploadRow = function(ev) {
+        var row = ev.target.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+        this.validate();
+        };
+
+        DndFileUploadWidget.prototype.fileSelected_handler = function(event) {
+        var fileList = event.target.files;
+        for (var i = 0; i < fileList.length; i++) {
+            var file = fileList[i];
+            this.addFileUploadRow(file);
+        }
+        this.validate();
+        };
+
+        DndFileUploadWidget.prototype.validate = function() {
+        var filesContainer = this.getFilesContainer();
+        var totalSize = 0;
+        var fileUploadRows = filesContainer.children;
+        if (fileUploadRows.length === 0) {
+            this.getUploadButton().classList.add('hidden');
+            this.getSizeErrorSpan().classList.add('hidden');
+            return false;
+        }
+
+        for (var i = 0; i < fileUploadRows.length; i++) {
+            var fileUploadRow = fileUploadRows[i];
+            var file = fileUploadRow.file;
+            totalSize += file.size;
+        }
+
+        if (totalSize <= this._maxAllowedTotalBytes) {
+            this.getUploadButton().classList.remove('hidden');
+            this.getSizeErrorSpan().classList.add('hidden');
+            return true;
+        } else {
+            this.getUploadButton().classList.add('hidden');
+            this.getSizeErrorSpan().classList.remove('hidden');
+            this.getSizeErrorSpan().innerText = 'Total file size must not be greater than ' + humanReadableFileSize(this._maxAllowedTotalBytes) + '. Current: ' + humanReadableFileSize(totalSize);
+            return false;
+        }
+        };
+
+        DndFileUploadWidget.prototype.validateAndUpload = function() {
+        if (!this.validate()) {
+            return;
+        }
+        var formData = new FormData();
+        var filesContainer = this.getFilesContainer();
+        var fileUploadRows = filesContainer.children;
+        for(var i = 0; i < fileUploadRows.length; i++) {
+            var fileUploadRow = fileUploadRows[i];
+            var file = fileUploadRow.file;
+            formData.append('files[]', file, file.name);
+        }
+
+        var url = this._uploadUrl;
+        var completeUrl = this._completeUrl;
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", url, true);
+        var self = this;
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+            location.assign(completeUrl);
+            } else {
+            alert(xhr.statusText);
+            self.exitLoadingState();
+            }
+        };
+
+        xhr.onerror = function () {
+            alert(xhr.statusText);
+            self.exitLoadingState();
+        };
+
+        if (this._csrfHeaderName && this._csrfToken) {
+            xhr.setRequestHeader(this._csrfHeaderName , this._csrfToken);
+        }
+
+        xhr.send(formData);
+        this.enterLoadingState();
+        };
+
+
+        DndFileUploadWidget.prototype.enterLoadingState = function() {
+        this.getUploadButton().classList.add('hidden');
+        this.getUploadingButton().classList.remove('hidden');
+        var removeButtons = this.getFilesContainer().querySelectorAll('button');
+        for (var i = 0; i < removeButtons.length; i++) {
+            removeButtons[i].disabled = true;
+        }
+        };
+
+        DndFileUploadWidget.prototype.exitLoadingState = function() {
+        this.getUploadButton().classList.remove('hidden');
+        this.getUploadingButton().classList.add('hidden');
+        var removeButtons = this.getFilesContainer().querySelectorAll('button');
+        for (var i = 0; i < removeButtons.length; i++) {
+            removeButtons[i].disabled = false;
+        }
+        };
+
+        DndFileUploadWidget.prototype.queryWithinWidget = function(selectors) {
+        return this._widgetDom.querySelector(selectors);
+        };
+
+        DndFileUploadWidget.prototype.getUploadButton = function() {
+        return this.queryWithinWidget('.dnd-file-upload-widget-upload-button');
+        };
+
+        DndFileUploadWidget.prototype.getUploadingButton = function() {
+        return this.queryWithinWidget('.dnd-file-upload-widget-uploading-button');
+        };
+
+        DndFileUploadWidget.prototype.getSizeErrorSpan = function() {
+        return this.queryWithinWidget('.dnd-file-upload-widget-size-error');
+        };
+
+        DndFileUploadWidget.prototype.getFilesContainer = function() {
+        return this.queryWithinWidget('.files-container');
+        };
+
+
+        /**
+         * Private methods
+         */
+        function humanReadableFileSize(b) {
+        var u = 0, s = 1024;
+        while (b >= s || -b >= s) {
+            b /= s;
+            u++;
+        }
+        return (u ? b.toFixed(1) + ' ' : b) + ' KMGTPEZY'[u] + 'iB';
+        }
+
+        function bind(func, scope) {
+        return function () {
+            func.apply(scope, arguments);
+        }
+        }
+
+        return DndFileUploadWidget;
+        })();
+
+        (function useDndFileUploadWidget(){
+        var widgetDom = document.getElementById('theWidget');
+        var uploadUrl = '';
+        var completeUrl = '';
+        var options = {
+        maxAllowedTotalBytes: 50 * 1024 * 1024, // 50MiB
+        csrfHeaderName: '',
+        csrfToken: ''
+        };
+
+        new DndFileUploadWidget(widgetDom, uploadUrl, completeUrl, options);
+})();
+
+</script>
+
+
+    
+</body>
+
+
+</html>

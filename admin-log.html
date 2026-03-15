@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1024">
+
+    <title>AXworks</title>
+
+
+    <!--js-->
+    <script type="text/javascript" src="assets/js/jquery-3.7.1.min.js"></script><!--jquery-->
+    <script type="text/javascript" src="assets/js/jquery-ui.min.js"></script><!--jqueryUI-->
+    <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/litepicker.js"></script> <!--datepicker-->
+
+    <!--bootstrap-->
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap-5.3.3/dist/css/bootstrap.min.css" />
+    <script type="text/javascript" src="assets/bootstrap-5.3.3/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/bootstrap-5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!--css-->
+    <link rel="stylesheet" type="text/css" href="assets/css/custom.css" /> <!--부트스트랩 커스텀-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css" /> <!--date picker-->
+
+
+    <!--Material+Icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+
+    <link rel="icon" href="assets/images/favicon.ico">
+
+</head>
+
+<body class="bg-slate-50">
+    <div class="admin-page bg-slate-50 mx-auto">
+            <div class="d-flex">
+                <!--lnb-->
+                <div class="width-100px bg-slate-900 min-vh-100 text-center pt-4 position-fixed">
+                    <img src="assets/images/AI-W logo simbol.svg" alt="logo image" width="50px" />
+                    <div class="menu-group d-flex flex-column px-2 py-4" style="height: calc(100vh - 75px);">
+                        <ul class="main-menu admin">
+                            <li><a href="관리자페이지-대시보드.html"><span class="menu-icon menu1"></span><span>대시보드</span></a></li>
+                            <li><a href="admin_manage-study-model.html"><span class="menu-icon menu2"></span><span>학습 관리</span></a></li>
+                            <li><a href="admin_manage-service.html"><span class="menu-icon menu3"></span><span>서비스 관리</span></a></li>
+                            <li><a href="정책관리_개인민감정보정책.html"><span class="menu-icon menu6"></span><span>정책 관리</span></a></li>
+                            <li><a href="admin_manage-history.html"><span class="menu-icon menu4"></span><span>이력 관리</span></a></li>
+                            <li><a href="관리자페이지-피드백관리.html"><span class="menu-icon menu7"></span><span>피드백 관리</span></a></li>
+                            <li><a href="user_chat.html"><span class="menu-icon menu5"></span><span>사용자 페이지</span></a></li>
+                        </ul>
+                        
+                        <ul class="setting-menu mt-auto mb-0 dropup">
+                            <li><a type="button" class="btn btn-lg btn-icon-only btn-nobg-dark active" href="admin_settings-administrator.html" title="환경설정"><span class="icon-setting"></span></a></li>
+                            <li><a type="button" class="btn btn-lg btn-icon-only btn-nobg-dark" href="admin-log.html" title="감사로그"><span class="icon-log"></span></a></li>
+                            <div class="dropup">
+                                <a type="button" class="btn btn-lg btn-icon-only btn-nobg-dark" data-bs-toggle="dropdown" aria-expanded="false" title="최정현 님"><span class="icon-user"></span></a>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li><a class="dropdown-item" href="#">매뉴얼 다운로드</a></li>
+                                    <li><a class="dropdown-item" href="#">로그아웃</a></li>
+                                </ul>
+                            </div>
+                           
+                        </ul>
+                    </div>
+                </div>
+                <!--//lnb-->
+                <!--contents area-->
+                <div class="flex-grow-1" style="margin-left:100px;">
+                    <!--contents body area-->
+                    <div class="p-4">
+                        <!--contents body top-->
+                        <div class="d-flex align-items-end justify-content-between w-100">
+                            <div>
+                                <h4 class="fw-bold">감사로그</h4>
+                            </div>
+                        </div>
+                        <!--//contents body top-->
+
+                        <div class="border border-radius-6 bg-white flex-grow-1 mt-2 p-3">
+                          <!--검색옵션-->
+                          <div class="d-flex align-items-end gap-2">
+                            <div>
+                              <span class="font-12 slate-400">
+                                일시 설정
+                              </span>
+                              <input class="form-control d-block date-picker" type="text" id="datepicker" placeholder="날짜를 선택하세요." />
+                            </div>
+                            <div>
+                              <span class="font-12 slate-400">
+                                로그 유형
+                              </span>
+                              <div class="multiselect-wrapper">
+                                <div class="selected-tags form-control" id="tagContainer" onclick="toggleOptions()"><span id="placeholder" class="slate-300">로그유형을 선택하세요.</span></div>
+                                <div class="options-list" id="optionList"></div>
+                              </div>
+                            </div>
+                            <div>
+                              <span class="font-12 slate-400">
+                                검색어
+                              </span>
+                              <input type="text" class="form-control width-200px search" placeholder="검색어를 입력하세요.">
+                            </div>
+                            <button class="btn btn-outline-secondary"><span class="material-symbols-outlined me-2">search</span>검색</button>
+                            <button type="button" class="btn btn-outline-dark ms-auto"><span class="material-symbols-outlined me-2">download</span>감사로그 다운로드</button>
+                          </div>
+
+                          <div class="d-flex">
+                            
+                          </div>
+
+                          <table class="table table-bordered table-hover text-center my-2">
+                            <colgroup>
+                                <col width="10%">
+                                <col width="15%">
+                                <col width="10%">
+                                <col width="15%">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th scope="row">유형</th>
+                                    <th scope="row">ID (이메일)</th>
+                                    <th scope="row">접속지</th>
+                                    <th scope="row">일시</th>
+                                    <th scope="row">내용</th>
+                                </tr>
+                            </thead> 
+                            <tbody>
+                              <tr>
+                                  <td>로그인/로그아웃</td>
+                                  <td class="text-ellipsis">rlfthdus@jiran.com</td>
+                                  <td>10.10.10.10</td>
+                                  <td>2025-04-23 00:00:00</td>
+                                  <td>다른 세션 로그인으로 인한 로그아웃</td>
+                              </tr>
+                              <tr>
+                                <td>설정 변경</td>
+                                <td class="text-ellipsis">rlfthdus@jiran.com</td>
+                                <td>10.10.10.10</td>
+                                <td>2025-04-23 00:00:00</td>
+                                <td>비밀번호 변경 (<b>이메일</b>: yonghoon@jiran.com / <b>사용자 명</b>: 조용훈)</td>
+                              </tr>
+                              <tr>
+                                <td>로그인/로그아웃</td>
+                                <td class="text-ellipsis">rlfthdus@jiran.com</td>
+                                <td>10.10.10.10</td>
+                                <td>2025-04-23 00:00:00</td>
+                                <td>다른 세션 로그인으로 인한 로그아웃</td>
+                              </tr>
+                            </tbody>
+                        </table>
+
+                        <nav aria-label="Page navigation">
+                          <ul class="pagination mb-0">
+                            <li class="page-item"><a class="page-link" href="#"><span class="material-symbols-outlined">arrow_back_ios</span></a></li>
+                            <li class="page-item"><a class="page-link" href="#">이전</a></li>
+                            <li class="page-item"><a class="page-link active" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">다음</a></li>
+                            <li class="page-item"><a class="page-link" href="#"><span class="material-symbols-outlined">arrow_forward_ios</span></a></li>
+                          </ul>
+                      </nav>
+
+                            
+                        </div>
+                    </div>
+                    <!--//contents body area-->
+                </div>
+                <!--//contents area-->
+            </div>
+    </div>
+
+<!--datepicker-->
+<script>
+  const picker = new Litepicker({
+    element: document.getElementById('datepicker'),
+    singleMode: false, // 범위 선택 모드
+    numberOfMonths: 2, // ✅ 달력 2개 표시
+    numberOfColumns: 2, // ✅ 2열 정렬
+    format: 'YYYY-MM-DD',
+    lang: 'ko',
+    tooltipText: {
+      one: '일',
+      other: '일'
+    },
+    tooltipNumber: (totalDays) => {
+      return totalDays;
+    }
+  });
+</script>
+
+<!--멀티 셀렉트 박스 -->
+<script>
+  const options = ["로그인/로그아웃", "설정 변경", "시스템"];
+  const selected = new Set(options); // ✅ 모든 항목 기본 선택
+
+  const tagContainer = document.getElementById('tagContainer');
+  const optionList = document.getElementById('optionList');
+
+  function renderOptions() {
+    optionList.innerHTML = "";
+    options.forEach(opt => {
+      const optionEl = document.createElement("div");
+      optionEl.textContent = opt;
+
+      if (selected.has(opt)) {
+        optionEl.style.opacity = "0.5";
+        optionEl.style.pointerEvents = "none";
+      } else {
+        optionEl.onclick = e => {
+          e.stopPropagation();
+          selected.add(opt);
+          renderTags();
+          renderOptions();
+        };
+      }
+
+      optionList.appendChild(optionEl);
+    });
+  }
+
+  function renderTags() {
+    tagContainer.innerHTML = "";
+
+    // 빈 상태 여부 판단해서 placeholder 중앙정렬 유지
+    tagContainer.classList.toggle("empty", selected.size === 0);
+
+    if (selected.size === 0) {
+      const placeholder = document.createElement("span");
+      placeholder.id = "placeholder";
+      placeholder.className = "slate-300";
+      placeholder.textContent = "로그유형을 선택하세요.";
+      tagContainer.appendChild(placeholder);
+    } else {
+      selected.forEach(value => {
+        const tag = document.createElement("div");
+        tag.className = "tag";
+        tag.innerHTML = `${value} <span onclick="removeTag('${value}', event)">×</span>`;
+        tagContainer.appendChild(tag);
+      });
+    }
+  }
+
+  function removeTag(value, e) {
+    e.stopPropagation();
+    selected.delete(value);
+    renderTags();
+    renderOptions();
+  }
+
+  function toggleOptions() {
+    const isVisible = optionList.style.display === "block";
+    optionList.style.display = isVisible ? "none" : "block";
+  }
+
+  document.addEventListener("click", e => {
+    if (!e.target.closest(".multiselect-wrapper")) {
+      optionList.style.display = "none";
+    }
+  });
+
+  // ✅ 초기 로딩 시 렌더링
+  renderTags();
+  renderOptions();
+
+</script>
+
+</body>
+
+
+</html>

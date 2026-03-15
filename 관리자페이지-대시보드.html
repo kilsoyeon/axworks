@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1024">
+
+    <title>AXworks</title>
+
+
+    <!--js-->
+    <script type="text/javascript" src="assets/js/jquery-3.7.1.min.js"></script><!--jquery-->
+
+    <!--bootstrap-->
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap-5.3.3/dist/css/bootstrap.min.css" />
+    <script type="text/javascript" src="assets/bootstrap-5.3.3/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/bootstrap-5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!--css-->
+    <link rel="stylesheet" type="text/css" href="assets/css/custom.css" /> <!--부트스트랩 커스텀-->
+
+    <!--Material+Icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+
+    <link rel="icon" href="assets/images/favicon.ico">
+
+</head>
+
+<body class="bg-slate-50">
+    <div class="admin-page bg-slate-50 mx-auto">
+            <div class="d-flex">
+                <!--lnb-->
+                <div class="width-100px bg-slate-900 min-vh-100 text-center pt-4 position-fixed">
+                    <img src="assets/images/AI-W logo simbol.svg" alt="logo image" width="50px" />
+                    <div class="menu-group d-flex flex-column px-2 py-4" style="height: calc(100vh - 75px);">
+                        <ul class="main-menu admin">
+                            <li class="active"><a href="관리자페이지-대시보드.html"><span class="menu-icon menu1"></span><span>대시보드</span></a></li>
+                            <li><a href="admin_manage-study-model.html"><span class="menu-icon menu2"></span><span>학습 관리</span></a></li>
+                            <li><a href="admin_manage-service.html"><span class="menu-icon menu3"></span><span>서비스 관리</span></a></li>
+                            <li><a href="정책관리_개인민감정보정책.html"><span class="menu-icon menu6"></span><span>정책 관리</span></a></li>
+                            <li><a href="admin_manage-history.html"><span class="menu-icon menu4"></span><span>이력 관리</span></a></li>
+                            <li><a href="관리자페이지-피드백관리.html"><span class="menu-icon menu7"></span><span>피드백 관리</span></a></li>
+                            <li><a href="user_chat.html"><span class="menu-icon menu5"></span><span>사용자 페이지</span></a></li>
+                        </ul>
+                        <ul class="setting-menu mt-auto mb-0 dropup">
+                            <li><a type="button" class="btn btn-lg btn-icon-only btn-nobg-dark" href="admin_settings-administrator.html" title="환경설정"><span class="icon-setting"></span></a></li>
+                            <li><a type="button" class="btn btn-lg btn-icon-only btn-nobg-dark" href="admin-log.html" title="감사로그"><span class="icon-log"></span></a></li>
+                            <div class="dropup">
+                                <a type="button" class="btn btn-lg btn-icon-only btn-nobg-dark" data-bs-toggle="dropdown" aria-expanded="false" title="최정현 님"><span class="icon-user"></span></a>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li><a class="dropdown-item" href="#">매뉴얼 다운로드</a></li>
+                                    <li><a class="dropdown-item" href="#">로그아웃</a></li>
+                                </ul>
+                            </div>
+                           
+                        </ul>
+                    </div>
+                </div>
+                <!--//lnb-->
+                <!--contents area-->
+                <div class="flex-grow-1 d-flex flex-column" style="margin-left:100px; min-height:100vh;">
+                    <!--contents body area-->
+                    <div class="p-4">
+                        <!--contents body top-->
+                        <div class="">
+                            <div>
+                                <h4 class="fw-bold">대시보드</h4>
+                                <p class="slate-400 font-12">AXworks 내 프롬프트 통계를 조회합니다.</p>
+                            </div>
+
+                            <div class="dr-wrap mt-4" id="drWrap">
+                                <div class="d-flex align-items-center gap-2">
+                                    <button type="button" class="form-control dr-input" id="drTrigger" aria-haspopup="dialog" aria-expanded="false">
+                                        <i class="bi bi-calendar3"></i>
+                                        <span class="dr-input__text" id="drText">YYYY-MM-DD ~ YYYY-MM-DD</span>
+                                    </button>
+
+                                    <button class="btn btn-outline-secondary" id="drSearch"><span class="material-symbols-outlined me-2">search</span>조회</button>
+
+                                    <small class="text-muted d-none d-md-block text-secondary ms-4">
+                                    대시보드 내 통계 데이터는 조회 시점을 기준으로 실시간 반영됩니다.
+                                    </small>
+                                </div>
+                                <!-- Panel (dropdown-like) -->
+                                <div class="dr-panel" id="drPanel" role="dialog" aria-label="기간 선택" aria-hidden="true">
+                                    <div class="row g-0">
+                                        <!-- Presets -->
+                                        <aside class="col-12 col-md-2 dr-presets">
+                                            <div class="dr-presets__title">빠른 선택</div>
+
+                                            <div class="list-group dr-list">
+                                                <button class="list-group-item list-group-item-action dr-preset" data-preset="today" type="button">오늘</button>
+                                                <button class="list-group-item list-group-item-action dr-preset" data-preset="last7" type="button">지난 7일</button>
+                                                <button class="list-group-item list-group-item-action dr-preset" data-preset="last30" type="button">지난 30일</button>
+                                                <button class="list-group-item list-group-item-action dr-preset" data-preset="thisMonth" type="button">이번 달</button>
+                                                <button class="list-group-item list-group-item-action dr-preset" data-preset="lastMonth" type="button">지난 달</button>
+                                                <button class="list-group-item list-group-item-action dr-custom" id="drCustom" type="button">기간 설정</button>
+                                            </div>
+                                        </aside>
+
+                                        <!-- Calendars -->
+                                        <section class="col-12 col-md-10 dr-cal">
+                                            <div class="dr-cal__months">
+                                                <div class="dr-month" id="drMonthA"></div>
+                                                <div class="dr-month" id="drMonthB"></div>
+                                            </div>
+                                        </section>
+                                    </div>
+
+                                    <div class="dr-footer">
+                                        <div class="dr-preview" id="drPreview" aria-live="polite"></div>
+
+                                        <div class="dr-footer__actions">
+                                            <button class="btn btn-sm btn-secondary" id="drCancel" type="button">취소</button>
+                                            <button class="btn btn-sm btn-dark" id="drApply" type="button">확인</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>   
+                    </div>
+                    <!--//contents body top-->
+                    <div class="bg-slate-200 p-4 flex-grow-1">
+                        <div class="data-group mb-4">
+                            <div class="data-card">
+                                <div class="data-icon data-icon--indigo">
+                                    <img src="assets/images/Question answer.svg" alt="전체 질문 수" />
+                                </div>
+                                <div class="ms-3">
+                                    <div class="data-title">
+                                        <span>전체 질문 수</span>
+                                        <span class="material-symbols-outlined ms-2" data-tooltip="조회 기간 내 발생한 전체 질문 건 수 의 합계">info</span>
+                                    </div>
+                                    <div class="data-value">1,234</div>
+                                </div>
+                            </div>
+
+                            <div class="data-card">
+                                <div class="data-icon data-icon--blue">
+                                    <img src="assets/images/Person.svg" alt="전체 사용자 수" />
+                                </div>
+                                <div class="ms-3">
+                                    <div class="data-title">
+                                        <span>전체 사용자 수</span>
+                                        <span class="material-symbols-outlined ms-2" data-tooltip="조회 기간 내 질문을 1회 이상 수행한 사용자 수 (중복 제외)">info</span>
+                                    </div>
+                                    <div class="data-value">25</div>
+                                </div>
+                            </div>
+
+                            <div class="data-card">
+                                <div class="data-icon data-icon--purple">
+                                    <img src="assets/images/Groups.svg" alt="전체 부서 수" />
+                                </div>
+                                <div class="ms-3">
+                                    <div class="data-title">
+                                        <span>전체 부서 수</span>
+                                        <span class="material-symbols-outlined ms-2" data-tooltip="조회 기간 내 질문이 발생한 부서 수 (중복 제외, 미소속 제외)">info</span>
+                                    </div>
+                                    <div class="data-value">6</div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="data-group">
+                            <div class="data-card">
+                                <div class="flex-fill">
+                                    <div class="data-title">
+                                        <span>부서별 질문 수 TOP5</span>
+                                        <button type="button" class="btn btn-nobg-light dash-toggle" data-action="toggle">
+                                            <span class="material-symbols-outlined">bar_chart</span>
+                                            <span class="dash-toggle__text">그래프로 보기</span>
+                                        </button>
+                                    </div>
+                                    <div class="dash-card__body">
+                                        <!-- chart -->
+                                        <div class="dash-view is-chart d-none" data-view="chart">
+                                            <div id="deptChart" class="apx-chart"></div>
+                                        </div>
+                                        <!-- table -->
+                                        <div class="dash-view is-table" data-view="table">
+                                            <div class="py-4">
+                                                <table class="table table-bordered table-hover text-center">
+                                                    <thead>
+                                                        <tr>
+                                                        <th style="width:80px">순위</th>
+                                                        <th>부서명</th>
+                                                        <th>질문 수</th>
+                                                        <th>비율</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="deptTbody"></tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                                            
+                            </div>
+                            <div class="data-card">
+                                <div class="flex-fill">
+                                    <div class="data-title">
+                                        <span>사용자별 질문 수 TOP5</span>
+                                        <button type="button" class="btn btn-nobg-light dash-toggle" data-action="toggle">
+                                            <span class="material-symbols-outlined">bar_chart</span>
+                                            <span class="dash-toggle__text">그래프로 보기</span>
+                                        </button>
+                                    </div>
+                                    <div class="dash-card__body">
+                                        <!-- chart -->
+                                        <div class="dash-view d-none" data-view="chart">
+                                            <div id="userChart" class="apx-chart"></div>
+                                        </div>
+                                        <!-- table -->
+                                        <div class="dash-view py-4" data-view="table">
+                                            <table class="table table-bordered table-hover text-center">
+                                                <thead>
+                                                    <tr>
+                                                        <th>순위</th>
+                                                        <th>이름</th>
+                                                        <th>이메일</th>
+                                                        <th>부서</th>
+                                                        <th>질문 수</th>
+                                                        <th>비율</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="userTbody"></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
+                        
+                    </div>
+                        
+                </div>
+                <!--//contents body area-->
+            </div>
+            <!--//contents area-->
+        </div>
+    </div>
+
+
+<div id="tooltip" class="tooltip"></div>
+
+<!--천문연 20260226 (툴팁)-->
+<script>
+  const tooltip = document.getElementById('tooltip');
+  const tds = document.querySelectorAll('[data-tooltip]');
+
+  tds.forEach(td => {
+    td.addEventListener('mouseenter', () => {
+      tooltip.textContent = td.getAttribute('data-tooltip');
+      tooltip.classList.add('show');
+    });
+
+    td.addEventListener('mousemove', (e) => {
+      const offset = 12;
+      const scrollX = window.scrollX || window.pageXOffset;
+      const scrollY = window.scrollY || window.pageYOffset;
+
+      const tooltipWidth = tooltip.offsetWidth;
+      const tooltipHeight = tooltip.offsetHeight;
+
+      let left = e.clientX + offset;
+      let top = e.clientY + offset;
+
+      if (left + tooltipWidth > window.innerWidth) {
+        left = e.clientX - tooltipWidth - offset;
+      }
+
+      if (top + tooltipHeight > window.innerHeight) {
+        top = e.clientY - tooltipHeight - offset;
+      }
+
+      tooltip.style.left = left + 'px';
+      tooltip.style.top = top + 'px';
+    });
+
+    td.addEventListener('mouseleave', () => {
+      tooltip.classList.remove('show');
+    });
+  });
+</script>
+
+<!--천문연 20260226 (기간조회 DATE RANGE)-->
+<script>
+        (() => {
+        // ---------- date helpers ----------
+        
+        const pad = (n) => String(n).padStart(2,'0');
+        const fmt = (d) => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+        const sod = (d) => new Date(d.getFullYear(), d.getMonth(), d.getDate());
+        const addDays = (d, n) => new Date(d.getFullYear(), d.getMonth(), d.getDate() + n);
+        const som = (y,m) => new Date(y,m,1);
+        const eom = (y,m) => new Date(y,m+1,0);
+        const same = (a,b) => a && b && a.getTime() === b.getTime();
+        const order = (a,b) => (a && b && a > b) ? [b,a] : [a,b];
+        const monthTitle = (y,m) => `${y}년 ${m+1}월`;
+
+        const DOW = ['Su','Mo','Tu','We','Th','Fr','Sa'];
+        const preview = document.getElementById('drPreview');
+
+        // ---------- elements ----------
+        const wrap = document.getElementById('drWrap');
+        const trigger = document.getElementById('drTrigger');
+        const panel = document.getElementById('drPanel');
+        const text = document.getElementById('drText');
+
+        const monthA = document.getElementById('drMonthA');
+        const monthB = document.getElementById('drMonthB');
+
+        const presetBtns = document.querySelectorAll('.dr-preset');
+        const customBtn = document.getElementById('drCustom');
+
+        const cancel = document.getElementById('drCancel');
+        const apply = document.getElementById('drApply');
+        const searchBtn = document.getElementById('drSearch');
+
+        const searchLabel = document.getElementById('drSearchLabel');
+
+        // ---------- state ----------
+        const today = sod(new Date());
+        const maxDate = today; // ✅ 오늘까지만 선택 가능
+        const maxYear = maxDate.getFullYear();
+        const maxMonth = maxDate.getMonth(); // 0-based
+
+        let viewY = today.getFullYear();
+        let viewM = today.getMonth();
+
+        // committed = "확인" 눌러 확정된 값
+        let committedStart = null;
+        let committedEnd = null;
+
+        // draft = 패널 열려있는 동안 임시 선택
+        let draftStart = null;
+        let draftEnd = null;
+        let ignoreNextTrigger = false;
+
+        // ---------- ui helpers ----------
+        function setExpanded(v){
+            trigger.setAttribute('aria-expanded', v ? 'true' : 'false');
+            panel.setAttribute('aria-hidden', v ? 'false' : 'true');
+        }
+
+        function openPanel(){
+            panel.style.display = 'block';
+            panel.classList.add('is-open');
+            setExpanded(true);
+        }
+        function closePanel(){
+            panel.classList.remove('is-open');
+            setExpanded(false);
+            panel.style.display = 'none';
+        }
+
+        function setPresetActive(key){
+            presetBtns.forEach(b => b.classList.toggle('is-active', b.dataset.preset === key));
+        }
+
+        function setTopText(s, e){
+            if(s && e){
+            const [a,b] = order(s,e);
+            text.textContent = `${fmt(a)} ~ ${fmt(b)}`;
+            return;
+            }
+            text.textContent = 'YYYY-MM-DD ~ YYYY-MM-DD';
+        }
+
+        function setFooterPreview() {
+            if (!preview) return;
+            if (draftStart && draftEnd) {
+                const [s, e] = order(draftStart, draftEnd);
+                preview.textContent = `${fmt(s)}  ~  ${fmt(e)}`;
+            } else if (draftStart && !draftEnd) {
+                preview.textContent = `${fmt(draftStart)}  ~`;
+            } else {
+                preview.textContent = '';
+            }
+        }
+
+        // ---------- calendar rendering ----------
+        function buildMonth(el, y, m){
+            const first = som(y,m);
+            const last = eom(y,m);
+            const startW = first.getDay();
+            const days = last.getDate();
+
+            const cells = [];
+            for(let i=0;i<42;i++){
+            const dayNum = i - startW + 1;
+            cells.push(dayNum < 1 || dayNum > days ? null : new Date(y,m,dayNum));
+            }
+
+            const [s,e] = order(draftStart, draftEnd);
+            const isLeft = (el.id === 'drMonthA');
+
+            el.innerHTML = `
+                <div class="dr-title">
+                    <button class="btn btn-outline-light dr-nav ${isLeft ? '' : 'is-hidden'}" data-nav="prev" type="button" aria-label="이전 달"><span class="fs-5">‹</span></button>
+                    <div class="dr-title__text">${monthTitle(y,m)}</div>
+                    <button class="btn btn-outline-light dr-nav ${isLeft ? 'is-hidden' : ''}" data-nav="next" type="button" aria-label="다음 달"><span class="fs-5">›</span></button>
+                </div>
+                <div class="dr-dow">${DOW.map(d=>`<div>${d}</div>`).join('')}</div>
+                <div class="dr-grid">
+                ${cells.map(d=>{
+                    if(!d) return `<button class="dr-day is-muted" tabindex="-1" type="button"> </button>`;
+                    const dd = sod(d);
+                    const isFutureDay = dd > maxDate;
+
+                    const inRange = !isFutureDay && s && e && dd >= s && dd <= e;
+                    const isStart = !isFutureDay && s && same(dd, s);
+                    const isEnd = !isFutureDay && e && same(dd, e);
+
+                    const cls = [
+                    'dr-day',
+                    isFutureDay ? 'is-disabled' : '',
+                    inRange ? 'in-range' : '',
+                    isStart ? 'is-start' : '',
+                    isEnd ? 'is-end' : ''
+                    ].filter(Boolean).join(' ');
+
+                    // ✅ 미래 날짜는 data-date를 제거해서 pick 자체가 안 되게 함
+                    if (isFutureDay) {
+                    return `<button class="${cls}" type="button" tabindex="-1" aria-disabled="true">${dd.getDate()}</button>`;
+                    }
+
+                    return `<button class="${cls}" data-date="${fmt(dd)}" type="button">${dd.getDate()}</button>`;
+
+                    }).join('')}
+                </div>
+            `;
+        }
+
+        function render(){
+            // ✅ view 자체가 실수로 미래로 가있으면 현재월로 되돌림
+            if (viewY > maxYear || (viewY === maxYear && viewM > maxMonth)) {
+                viewY = maxYear;
+                viewM = maxMonth;
+            }
+
+            buildMonth(monthA, viewY, viewM);
+
+            const nm = new Date(viewY, viewM + 1, 1);
+            const ny = nm.getFullYear();
+            const nmo = nm.getMonth();
+
+            // ✅ 다음달이 미래면: 아예 표시하지 않음
+            const nextIsFuture = (ny > maxYear) || (ny === maxYear && nmo > maxMonth);
+
+            if (nextIsFuture) {
+                monthB.innerHTML = '';
+                monthB.style.display = 'none';
+            } else {
+                monthB.style.display = '';
+                buildMonth(monthB, ny, nmo);
+            }
+
+            setFooterPreview();
+        }
+
+        function pick(iso){
+            const [y,m,d] = iso.split('-').map(Number);
+            const picked = sod(new Date(y, m-1, d));
+
+            if (picked > maxDate) return;
+
+            // 1) 시작 선택(또는 기존 range가 있던 상태에서 새로 시작)
+            if(!draftStart || (draftStart && draftEnd)){
+                draftStart = picked;
+                draftEnd = null;
+
+                // ✅ 첫 클릭만으로는 '기간 설정' active로 바꾸지 않음
+                // (기존 active 유지)
+                render();
+                return;
+            }
+
+            // 2) 종료 선택 → range 완성
+            draftEnd = picked;
+            [draftStart, draftEnd] = order(draftStart, draftEnd);
+
+            // ✅ 두 번째 클릭으로 range가 완성되면 '기간 설정' 활성화
+            setCustomActive();
+
+            render();
+        }
+
+        function formatShort(d){
+            const pad = (n) => String(n).padStart(2,'0');
+            return `${String(d.getFullYear()).slice(2)}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+        }
+
+        function updateSearchLabel(){
+            // searchLabel이 존재하지 않으면 함수를 종료하여 에러 방지
+            if(!searchLabel) return; 
+
+            if(!committedStart || !committedEnd){
+                searchLabel.textContent = '';
+                return;
+            }
+
+            const [s,e] = order(committedStart, committedEnd);
+            searchLabel.textContent = `${formatShort(s)} ~ ${formatShort(e)}`;
+}
+
+        // ---------- presets ----------
+        function applyPreset(key){
+            const now = sod(new Date());
+            let s=null, e=null;
+
+            if(key === 'today'){ s = now; e = now; }
+            if(key === 'last7'){ s = addDays(now, -6); e = now; }
+            if(key === 'last30'){ s = addDays(now, -29); e = now; }
+            if(key === 'thisMonth'){ s = som(now.getFullYear(), now.getMonth()); e = now; }
+            if(key === 'lastMonth'){
+            const lm = new Date(now.getFullYear(), now.getMonth()-1, 1);
+            s = som(lm.getFullYear(), lm.getMonth());
+            e = eom(lm.getFullYear(), lm.getMonth());
+            }
+
+            draftStart = s; draftEnd = e;
+            setPresetActive(key);
+            if (customBtn) customBtn.classList.remove('is-active');
+            viewY = draftStart.getFullYear();
+            viewM = draftStart.getMonth();
+            render();
+        }
+
+        presetBtns.forEach(btn=>{
+            btn.addEventListener('click', ()=> applyPreset(btn.dataset.preset));
+        });
+
+        if (customBtn) {
+            customBtn.addEventListener('click', () => {
+                setCustomActive();
+            });
+        }
+
+        function setCustomActive() {
+            presetBtns.forEach(b => b.classList.remove('is-active'));
+            if (customBtn) customBtn.classList.add('is-active');
+        }
+
+        // ---------- open/close behavior ----------
+        trigger.addEventListener('click', ()=>{
+            if (ignoreNextTrigger) {
+                ignoreNextTrigger = false;
+                return;
+            }
+            const isOpen = panel.classList.contains('is-open');
+            if(isOpen){
+            closePanel();
+            } else {
+            // open with committed values as draft
+            draftStart = committedStart;
+            draftEnd = committedEnd;
+
+            // view sync
+            const base = draftStart || today;
+            viewY = base.getFullYear();
+            viewM = base.getMonth();
+
+            // committed 값 기준으로 프리셋 자동 판단
+            const diff = (committedEnd - committedStart) / (1000*60*60*24) + 1;
+            const now = sod(new Date());
+            const last7Start = addDays(now, -6);
+
+            if (same(committedStart, last7Start) && same(committedEnd, now)) {
+                setPresetActive('last7');
+            } else {
+                setPresetActive(null);
+            }
+            render();
+            openPanel();
+            }
+        });
+
+        function shiftMonth(delta){
+            const candidate = new Date(viewY, viewM + delta, 1);
+
+            // ✅ 미래 달로 이동 금지
+            const cy = candidate.getFullYear();
+            const cm = candidate.getMonth();
+            if (cy > maxYear || (cy === maxYear && cm > maxMonth)) return;
+
+            viewY = cy;
+            viewM = cm;
+            render();
+        }
+
+        // ✅ 렌더링으로 DOM이 바뀌어도 항상 동작하는 이벤트 위임
+        panel.addEventListener('click', (ev) => {
+            const navBtn = ev.target.closest('button.dr-nav[data-nav]');
+            if (navBtn) {
+                ev.preventDefault();
+                ev.stopPropagation();
+                shiftMonth(navBtn.dataset.nav === 'prev' ? -1 : 1);
+                return;
+            }
+
+            const dayBtn = ev.target.closest('button.dr-day[data-date]');
+            if (dayBtn) {
+                ev.preventDefault();
+                ev.stopPropagation();
+                pick(dayBtn.dataset.date);
+            }
+        });
+
+        // outside click close
+        document.addEventListener('click', (e) => {
+            if (!panel.classList.contains('is-open')) return;
+
+            // ✅ DOM이 render()로 재구성되어 target이 분리돼도 path로 판별 가능
+            const path = e.composedPath ? e.composedPath() : [];
+            if (path.includes(wrap) || path.includes(panel) || path.includes(trigger)) return;
+
+            closePanel();
+        });
+
+        // ESC close
+        document.addEventListener('keydown', (e)=>{
+            if(e.key === 'Escape' && panel.classList.contains('is-open')){
+            closePanel();
+            }
+        });
+
+        // ---------- footer actions ----------
+        cancel.addEventListener('click', ()=>{
+            // draft를 committed로 되돌리고 닫기
+            draftStart = committedStart;
+            draftEnd = committedEnd;
+            render();
+            closePanel();
+        });
+
+        apply.addEventListener('click', (ev) => {
+            // 1. 이벤트 전파를 즉시 중단 (다른 클릭 핸들러 방해 방지)
+            ev.preventDefault();
+            ev.stopPropagation();
+            ev.stopImmediatePropagation();
+
+            if(!draftStart || !draftEnd) {
+                alert('기간을 선택해주세요.');
+                return;
+            }
+
+            // 2. 선택한 날짜 확정
+            const [s, e] = order(draftStart, draftEnd);
+            committedStart = s;
+            committedEnd = e;
+
+            // 3. UI 업데이트
+            setTopText(committedStart, committedEnd);
+            updateSearchLabel();
+
+            // 4. 패널 닫기 및 트리거 방지 설정
+            ignoreNextTrigger = true; 
+            closePanel(); 
+            
+            // 5. (중요) 약간의 시간차를 두어 ignoreNextTrigger를 해제하거나 
+            // 전파된 이벤트가 모두 소멸된 후 상태를 안정화합니다.
+            setTimeout(() => {
+                ignoreNextTrigger = false;
+            }, 100);
+        });
+
+
+        // search button example
+        searchBtn.addEventListener('click', ()=>{
+            if(committedStart && committedEnd){
+            console.log('SEARCH', fmt(committedStart), fmt(committedEnd));
+            } else {
+            console.log('SEARCH (no range committed)');
+            }
+        });
+
+        // ---------- init (default: last 7 days committed) ----------
+        (() => {
+            const now = sod(new Date());          // ✅ now 선언(조회 시점)
+            committedStart = addDays(now, -6);    // ✅ 오늘 포함 최근 7일
+            committedEnd = now;
+
+            // ✅ 캘린더 열기 전에도 상단/버튼에 날짜 표기되도록
+            setTopText(committedStart, committedEnd);
+            updateSearchLabel();
+
+            // (선택) 패널 열었을 때 즉시 하이라이트/프리뷰 보이게 draft도 동기화
+            draftStart = committedStart;
+            draftEnd = committedEnd;
+            setFooterPreview();
+            setPresetActive('last7');
+            panel.style.display = 'none';
+
+        })();
+    })();
+</script>
+
+<!--천문연 20260226 (대시보드 그래프)-->
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+    /* --- 데이터 정의 --- */
+    const deptData = {
+        total: 356,
+        rows: [
+            { label: "개발팀", value: 150 }, { label: "디자인팀", value: 100 },
+            { label: "마케팅팀", value: 50 }, { label: "기획팀", value: 40 }, { label: "인사팀", value: 16 }
+        ]
+    };
+
+    const userData = {
+        total: 356,
+        rows: [
+            { name: "길소연", email: "rlfthdus@kasi.re.kr", dept: "개발팀", value: 23 },
+            { name: "최정현", email: "chlwjdgus256521@kasi.re.kr", dept: "디자인팀", value: 19 },
+            { name: "이두유", email: "doyou@kasi.re.kr", dept: "마케팅팀", value: 11 },
+            { name: "박원진", email: "one225699@kasi.re.kr", dept: "기획팀", value: 9 },
+            { name: "아이맥", email: "imac@kasi.re.kr", dept: "인사팀", value: 5 }
+        ]
+    };
+
+    /* --- 차트 생성 함수 --- */
+    function createDashboardChart(elSelector, categories, values, isUserCard = false) {
+        const rootEl = document.querySelector(elSelector);
+        if (!rootEl) return null;
+
+        const scopeEl = rootEl.closest('.data-card');
+        const focuser = makeHoverFocuser(scopeEl);
+
+        const options = {
+            chart: {
+                type: 'bar', height: 320, toolbar: { show: false },
+                events: {
+                    dataPointMouseEnter: (e, chart, config) => focuser.focus(config.dataPointIndex),
+                    dataPointMouseLeave: () => focuser.clear(),
+                    mouseLeave: () => focuser.clear()
+                }
+            },
+            plotOptions: { 
+                bar: { horizontal: true, barHeight: '55%', borderRadius: 2 } 
+            },
+            dataLabels: {
+                enabled: false,
+            },
+            series: [{ name: '질문 수', data: values }],
+            colors: ['#A5B4FC'],
+            stroke: { show: true, width: 1, colors: ['#6650EA'] },
+            fill: {
+                type: 'gradient',
+                gradient: { shade: 'light', type: 'horizontal', gradientToColors: ['#818CF8'], opacityFrom: 0.8, opacityTo: 0.4 }
+            },
+            xaxis: { categories: categories },
+            yaxis: {
+                labels: {
+                    style: { fontSize: '12px', colors: '#64748b' },
+                    formatter: function(val, index) {
+                    if (isUserCard && userData.rows[index]) {
+                        // 이름과 (이메일)을 배열로 묶어 반환하면 2줄로 출력됩니다.
+                        return [val, `(${userData.rows[index].email})` ];
+                    }
+                    return val;
+                }
+                }
+            },
+            tooltip: {
+                theme: 'dark',
+                y: {
+                    formatter: (val) => {
+                        const total = isUserCard ? userData.total : deptData.total;
+                        return `${val}개 / ${((val / total) * 100).toFixed(1)}%`;
+                    }
+                }
+            }
+        };
+
+        const chart = new ApexCharts(rootEl, options);
+        chart.render();
+        return chart;
+    }
+
+    /* --- 포커스 유틸 함수 --- */
+    function makeHoverFocuser(rootEl) {
+        const qsa = (sel) => Array.from(rootEl.querySelectorAll(sel));
+        return {
+            focus: function(index) {
+                const bars = qsa('.apexcharts-bar-area');
+                const labels = qsa('.apexcharts-yaxis-label text, .apexcharts-yaxis-label tspan');
+                [...bars, ...labels].forEach(el => el.classList.add('is-dim'));
+                if (bars[index]) bars[index].classList.replace('is-dim', 'is-focus');
+                const targetLabel = qsa('.apexcharts-yaxis-label')[index];
+                if (targetLabel) {
+                    targetLabel.classList.remove('is-dim');
+                    targetLabel.classList.add('is-focus');
+                    targetLabel.querySelectorAll('tspan').forEach(t => t.classList.remove('is-dim'));
+                }
+            },
+            clear: function() {
+                qsa('.is-dim, .is-focus').forEach(el => el.classList.remove('is-dim', 'is-focus'));
+            }
+        };
+    }
+
+    /* --- 테이블 렌더링 함수 --- */
+    function renderDashboardTable(tbodyId, data, isUser = false) {
+        const tbody = document.getElementById(tbodyId);
+        if (!tbody) return;
+
+        tbody.innerHTML = data.rows.map((row, idx) => {
+            // 전체 대비 비율 계산
+            const pct = data.total > 0 ? ((row.value / data.total) * 100).toFixed(1) : 0;
+            
+            if (isUser) {
+                // 사용자별 테이블: 순위, 이름, 이메일, 부서, 질문 수, 비율
+                return `
+                    <tr>
+                        <td>${idx + 1}</td>
+                        <td>${row.name}</td>
+                        <td class="text-secondary small">${row.email}</td>
+                        <td>${row.dept || '-'}</td>
+                        <td>${row.value.toLocaleString()}</td>
+                        <td>${pct}%</td>
+                    </tr>`;
+            }
+            
+            // 부서별 테이블: 순위, 부서명, 질문 수, 비율
+            return `
+                <tr>
+                    <td>${idx + 1}</td>
+                    <td>${row.label}</td>
+                    <td>${row.value.toLocaleString()}</td>
+                    <td>${pct}%</td>
+                </tr>`;
+        }).join('');
+    }
+
+    /* --- 초기 실행 --- */
+    createDashboardChart('#deptChart', deptData.rows.map(r => r.label), deptData.rows.map(r => r.value));
+    createDashboardChart('#userChart', userData.rows.map(r => r.name), userData.rows.map(r => r.value), true);
+    renderDashboardTable('deptTbody', deptData);
+    renderDashboardTable('userTbody', userData, true);
+
+    /* --- 공통 토글 로직 --- */
+    /* --- 공통 토글 로직 수정 --- */
+    document.querySelectorAll('[data-action="toggle"]').forEach(btn => {
+        btn.addEventListener('click', function () {
+            const card = this.closest('.data-card');
+            const chartView = card.querySelector('[data-view="chart"]');
+            const tableView = card.querySelector('[data-view="table"]');
+            const iconEl = this.querySelector('.material-symbols-outlined');
+            const textEl = this.querySelector('.dash-toggle__text');
+
+            // 현재 테이블이 숨겨져 있는지(즉, 차트가 보이는지) 확인
+            if (tableView.classList.contains('d-none')) {
+                // 테이블 보이기 모드로 전환
+                tableView.classList.remove('d-none');
+                chartView.classList.add('d-none');
+                if (iconEl) iconEl.textContent = 'bar_chart'; // 다음 액션 제안
+                if (textEl) textEl.textContent = '그래프로 보기';
+            } else {
+                // 차트 보이기 모드로 전환
+                tableView.classList.add('d-none');
+                chartView.classList.remove('d-none');
+                if (iconEl) iconEl.textContent = 'table_chart'; // 다음 액션 제안
+                if (textEl) textEl.textContent = '테이블로 보기';
+                window.dispatchEvent(new Event('resize')); // ApexCharts 리렌더링 대응
+            }
+        });
+    });
+});
+    
+</script>
+
+<script src="assets/js/apexcharts.min.js"></script> <!-- 대시보드 그래프 apexcharts -->
+    
+</body>
+
+
+</html>

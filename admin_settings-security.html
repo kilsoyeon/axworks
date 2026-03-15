@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1024">
+
+    <title>AXworks</title>
+
+
+    <!--js-->
+    <script type="text/javascript" src="assets/js/jquery-3.7.1.min.js"></script><!--jquery-->
+    <script type="text/javascript" src="assets/js/jquery-ui.min.js"></script><!--jqueryUI-->
+
+    <!--bootstrap-->
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap-5.3.3/dist/css/bootstrap.min.css" />
+    <script type="text/javascript" src="assets/bootstrap-5.3.3/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/bootstrap-5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!--css-->
+    <link rel="stylesheet" type="text/css" href="assets/css/custom.css" /> <!--부트스트랩 커스텀-->
+
+    <!--Material+Icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+
+    <link rel="icon" href="assets/images/favicon.ico">
+
+</head>
+
+<body class="bg-slate-50">
+    <div class="admin-page bg-slate-50 mx-auto">
+            <div class="d-flex">
+                <!--lnb-->
+                <div class="width-100px bg-slate-900 min-vh-100 text-center pt-4 position-fixed">
+                    <img src="assets/images/AI-W logo simbol.svg" alt="logo image" width="50px" />
+                    <div class="menu-group d-flex flex-column px-2 py-4" style="height: calc(100vh - 75px);">
+                        <ul class="main-menu admin">
+                            <li><a href="관리자페이지-대시보드.html"><span class="menu-icon menu1"></span><span>대시보드</span></a></li>
+                            <li><a href="admin_manage-study-model.html"><span class="menu-icon menu2"></span><span>학습 관리</span></a></li>
+                            <li><a href="admin_manage-service.html"><span class="menu-icon menu3"></span><span>서비스 관리</span></a></li>
+                            <li><a href="정책관리_개인민감정보정책.html"><span class="menu-icon menu6"></span><span>정책 관리</span></a></li>
+                            <li><a href="admin_manage-history.html"><span class="menu-icon menu4"></span><span>이력 관리</span></a></li>
+                            <li><a href="관리자페이지-피드백관리.html"><span class="menu-icon menu7"></span><span>피드백 관리</span></a></li>
+                            <li><a href="user_chat.html"><span class="menu-icon menu5"></span><span>사용자 페이지</span></a></li>
+                        </ul>
+                        
+                        <ul class="setting-menu mt-auto mb-0 dropup">
+                            <li><a type="button" class="btn btn-lg btn-icon-only btn-nobg-dark active" href="admin_settings-administrator.html" title="환경설정"><span class="icon-setting"></span></a></li>
+                            <li><a type="button" class="btn btn-lg btn-icon-only btn-nobg-dark" href="admin-log.html" title="감사로그"><span class="icon-log"></span></a></li>
+                            <div class="dropup">
+                                <a type="button" class="btn btn-lg btn-icon-only btn-nobg-dark" data-bs-toggle="dropdown" aria-expanded="false" title="최정현 님"><span class="icon-user"></span></a>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li><a class="dropdown-item" href="#">매뉴얼 다운로드</a></li>
+                                    <li><a class="dropdown-item" href="#">로그아웃</a></li>
+                                </ul>
+                            </div>
+                           
+                        </ul>
+                    </div>
+                </div>
+                <!--//lnb-->
+                <!--contents area-->
+                <div class="flex-grow-1" style="margin-left:100px;">
+                    <!--contents tab area-->
+                    <div class="bg-light border-bottom p-2 position-fixed w-100">
+                        <ul class="nav nav-pills">
+                            <li class="nav-item"><a class="nav-link" href="admin_settings-administrator.html">관리자 설정</a></li>
+                            <li class="nav-item"><a class="nav-link" href="admin_settings-user.html">사용자 설정</a></li>
+                            <li class="nav-item"><a class="nav-link" href="admin_settings-security.html">보안 설정</a></li>
+                            <li class="nav-item"><a class="nav-link" href="admin_settings-license.html">라이선스 설정</a></li>
+                            <li class="nav-item"><a class="nav-link" href="admin_settings-others.html">기타 설정</a></li>
+                        </ul>
+                    </div>
+                    <!--//contents tab area-->
+                    <!--contents body area-->
+                    <div class="p-4" style="margin-top: 55px;">
+                        <!--contents body top-->
+                        <div class="d-flex align-items-end justify-content-between w-100">
+                            <div>
+                                <h4 class="fw-bold">보안 설정</h4>
+                            </div>
+                        </div>
+                        <!--//contents body top-->
+                        
+                        <div class="d-flex align-items-start mt-2">
+                            
+                            <div class="border border-radius-6 bg-white p-3">
+
+                                <form class="width-500px mt-3">
+                                    <div class="mb-3">
+                                        <label class="form-label">사용자 별 IP 제한 설정<a class="text-secondary text-decoration-none" href="#"
+                                            id="ipPopover"><span class="material-symbols-outlined ms-2">info</span></a></label>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" role="switch" id="IP">
+                                            <label class="form-check-label" for="IP"></label>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">로그인 실패 잠금 설정</label>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input toggle-switch" type="checkbox" role="switch" id="switch1" data-target="#content1">
+                                            <label class="form-check-label" for="switch1"></label>
+                                        </div>
+                                        <!--ON일때-->
+                                        <div id="content1" class="bg-light border-radius-4 border border-dashed mt-2 p-2" style="display: none;">
+                                            <div class="d-flex align-items-center gap-2 mb-2">
+                                                <label class="form-label width-120px">로그인 잠금 실패 횟수</label>
+                                                <input type="number" min="1" max="100" value="5" class="form-control width-100px">
+                                                <span>회</span>
+                                            </div>
+                                            <div class="d-flex align-items-center gap-2">
+                                                <label class="form-label width-120px">로그인 잠금 시간</label>
+                                                <input type="number" min="5" max="120" value="5" class="form-control width-100px">
+                                                <span>분</span>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">로그인 세션 관리 설정</label>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input toggle-switch" type="checkbox" role="switch" id="switch2" data-target="#content2">
+                                            <label class="form-check-label" for="switch2"></label>
+                                        </div>
+                                        <!--ON일때-->
+                                        <div id="content2" class="bg-light border-radius-4 border border-dashed mt-2 p-2" style="display: none;">
+                                            <div class="d-flex align-items-center gap-2">
+                                                <label class="form-label width-120px">로그인 세션 타임아웃</label>
+                                                <input type="number" min="5" max="300" value="30" class="form-control width-100px">
+                                                <span>분</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">패스워드 변경 주기 설정</label>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input toggle-switch" type="checkbox" role="switch" id="switch3" data-target="#content3">
+                                            <label class="form-check-label" for="switch3"></label>
+                                        </div>
+                                        <!--ON일때-->
+                                        <div id="content3" class="bg-light border-radius-4 border border-dashed mt-2 p-2" style="display: none;">
+                                            <div class="d-flex align-items-center gap-2">
+                                                <label class="form-label width-120px">패스워드 변경 주기</label>
+                                                <input type="number" min="5" max="120" value="30" class="form-control width-100px">
+                                                <span>일</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex mt-4">
+                                        <button type="button" class="btn btn-dark ms-auto">저장</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <!--//contents body area-->
+                </div>
+                <!--//contents area-->
+            </div>
+    </div>
+
+<!--스위치 ON일때 활성화-->
+<script>
+    document.querySelectorAll('.toggle-switch').forEach((switchEl) => {
+      switchEl.addEventListener('change', () => {
+        const targetSelector = switchEl.getAttribute('data-target');
+        const targetEl = document.querySelector(targetSelector);
+  
+        if (switchEl.checked) {
+          targetEl.style.display = 'block';
+        } else {
+          targetEl.style.display = 'none';
+        }
+      });
+    });
+</script>
+<!--팝오버-->
+<script>
+    const el = document.getElementById('ipPopover');
+  
+    const popover = new bootstrap.Popover(el, {
+      html: true,
+      content: `
+        <div class="text-left">- ON 설정 시, 사용자는 <b>지정된 IP에서만</b>사용자 페이지에 접속할 수 있습니다.<br>- OFF 설정 시, <b>IP 제한 없이</b> 사용자 페이지 접속이 허용됩니다.<br>- 사용자별 접근 IP는 <b>[환경설정 → 사용자 설정 → 접근 IP]</b>에서 등록할 수 있습니다.</div>
+      `,
+      placement: 'right', // 위치는 top, bottom, left, right 가능
+      trigger: 'hover'
+    });
+  </script>
+    
+</body>
+
+
+</html>

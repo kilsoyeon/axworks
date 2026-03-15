@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>AXworks</title>
+
+
+    <!--js-->
+    <script type="text/javascript" src="assets/js/jquery-3.7.1.min.js"></script><!--jquery-->
+
+    <!--bootstrap-->
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap-5.3.3/dist/css/bootstrap.min.css" />
+    <script type="text/javascript" src="assets/bootstrap-5.3.3/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/bootstrap-5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!--css-->
+    <link rel="stylesheet" type="text/css" href="assets/css/custom.css" /> <!--부트스트랩 커스텀-->
+
+    <!--Material+Icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+
+    <link rel="icon" href="assets/images/favicon.ico">
+
+</head>
+
+<body>
+    <div>
+        <div class="d-flex justify-content-center align-items-center height-100vh">
+            <div class="d-flex flex-column pb-5">
+                <div class="text-center mb-5">
+                    <img src="assets/images/AI-W logo.svg" alt="logo image" width="160px" />
+                </div>
+                <div class="text-center mb-4">
+                    <img src="assets/images/jade-x.png" alt="jade" width="200px" />
+                </div>
+                <div class="text-center">
+                    <p class="mb-4 font-18 fw-bold slate-800">접근이 제한된 페이지입니다.</p>
+                    <p class="font-13 slate-500">AXworks는 천문연구원의 <b><u>KMS 로그인을 통해서만 접근</u></b>할 수 있습니다.<br>
+                    보안을 위해 직접 URL을 통한 접속은 제한됩니다.</p>
+                </div>
+            </div>
+            
+        </div>
+        <div class="text-center font-12 slate-400" style="margin-top: -50px">
+            <p class="mt-1">©JIRANDATA. All rights reserved</p>
+        </div>
+    </div>
+
+
+<!--모바일 별 브라우저 높이 감지-->
+<script>
+    function setFullHeight() {
+      const content = document.getElementById('content');
+      content.style.height = `${window.innerHeight}px`;
+    }
+    window.addEventListener('load', setFullHeight);
+    window.addEventListener('resize', setFullHeight);
+</script>
+
+</body>
+
+
+</html>

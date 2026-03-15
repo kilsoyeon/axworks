@@ -1,0 +1,183 @@
+.height-100vh {
+  height: 100vh;
+}
+
+.width-320px {
+  width: 320px !important;
+}
+
+.width-300px {
+  width: 300px !important;
+}
+
+.width-400px {
+  width: 400px !important;
+}
+
+.width-500px {
+  width: 500px !important;
+}
+
+.width-600px {
+  width: 600px !important;
+}
+
+.width-700px {
+  width: 700px !important;
+}
+
+.width-200px {
+  width: 200px !important;
+}
+
+.width-100px {
+  width: 100px !important;
+}
+
+.width-120px {
+  width: 120px !important;
+}
+
+.width-150px {
+  width: 150px !important;
+}
+
+.border-radius-4 {
+  border-radius: 4px;
+}
+
+.border-radius-6 {
+  border-radius: 6px;
+}
+
+.border-radius-8 {
+  border-radius: 8px;
+}
+
+.font-12 {
+  font-size: 0.85rem;
+}
+
+.font-14 {
+  font-size: 1rem;
+}
+
+.font-15 {
+  font-size: 1.15rem !important;
+}
+
+.font-16 {
+  font-size: 1.25rem;
+}
+
+.font-18 {
+  font-size: 1.5rem;
+}
+
+.font-20 {
+  font-size: 1.75rem;
+}
+
+.font-24 {
+  font-size: 2rem;
+}
+
+.slate-50 {
+  color: #f8fafc;
+}
+
+.slate-100 {
+  color: #f1f5f9;
+}
+
+.slate-100 {
+  color: #f1f5f9;
+}
+
+.slate-200 {
+  color: #e2e8f0;
+}
+
+.slate-300 {
+  color: #cbd5e1;
+}
+
+.slate-400 {
+  color: #94a3b8;
+}
+
+.slate-500 {
+  color: #6f8199;
+}
+
+.slate-600 {
+  color: #526277;
+}
+
+.slate-700 {
+  color: #334155;
+}
+
+.slate-800 {
+  color: #29374d;
+}
+
+.slate-900 {
+  color: #0f172a;
+}
+
+.slate-950 {
+  color: #02030a;
+}
+
+.bg-slate-50 {
+  background-color: #f8fafc;
+}
+
+.bg-slate-100 {
+  background-color: #f1f5f9;
+}
+
+.bg-slate-200 {
+  background-color: #e2e8f0;
+}
+
+.bg-slate-300 {
+  background-color: #cbd5e1;
+}
+
+.bg-slate-400 {
+  background-color: #94a3b8;
+}
+
+.bg-slate-500 {
+  background-color: #6f8199;
+}
+
+.bg-slate-600 {
+  background-color: #526277;
+}
+
+.bg-slate-700 {
+  background-color: #334155;
+}
+
+.bg-slate-800 {
+  background-color: #29374d;
+}
+
+.bg-slate-900 {
+  background-color: #0f172a;
+}
+
+.bg-slate-950 {
+  background-color: #02030a;
+}
+
+.indigo-blue {
+  color: #6650EA;
+}
+
+.bg-indigo-blue {
+  background-color: #6650EA;
+}/*# sourceMappingURL=variables.css.map */
